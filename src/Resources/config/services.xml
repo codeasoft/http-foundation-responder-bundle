@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <defaults autowire="true" autoconfigure="true" public="false"/>
+
+        <service id="Tuzex\Responder\Bridge\HttpFoundation\RequestAccessor"/>
+        <service id="Tuzex\Responder\Bridge\HttpFoundation\Response\BinaryFileResponseFactory"/>
+        <service id="Tuzex\Responder\Bridge\HttpFoundation\Response\JsonResponseFactory"/>
+        <service id="Tuzex\Responder\Bridge\HttpFoundation\Response\RedirectResponseFactory"/>
+        <service id="Tuzex\Responder\Bridge\HttpFoundation\Response\ResponseFactory"/>
+        <service id="Tuzex\Responder\Bridge\Twig\TwigTemplateRenderer"/>
+
+        <service id="Tuzex\Responder\Service\TemplateRenderer" alias="Tuzex\Responder\Bridge\Twig\TwigTemplateRenderer"/>
+        <service id="Tuzex\Responder\Service\ReferrerProvider"/>
+        <service id="Tuzex\Responder\Service\UriProvider"/>
+
+        <service id="Tuzex\Responder\Result\Payload\FileTransformer"/>
+        <service id="Tuzex\Responder\Result\Payload\JsonTransformer"/>
+        <service id="Tuzex\Responder\Result\Payload\TextTransformer"/>
+        <service id="Tuzex\Responder\Result\Payload\TwigTransformer"/>
+        <service id="Tuzex\Responder\Result\Redirect\RedirectToRefererTransformer"/>
+        <service id="Tuzex\Responder\Result\Redirect\RedirectToRouteTransformer"/>
+        <service id="Tuzex\Responder\Result\Redirect\RedirectToSameUrlTransformer"/>
+        <service id="Tuzex\Responder\Result\Redirect\RedirectToUrlTransformer"/>
+
+        <service id="Tuzex\Responder\Responder"/>
+
+        <service id="Tuzex\Bundle\Responder\ResponderListener">
+            <tag name="kernel.event_listener" event="kernel.view" priority="1024"/>
+        </service>
+    </services>
+</container>
