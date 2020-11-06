@@ -1,0 +1,13 @@
+parameters:
+  level: 8
+  paths:
+    - src
+    - tests
+
+  checkMissingIterableValueType: false
+  ignoreErrors:
+  		- '#Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeDefinition::children\(\)\.#'
+
+includes:
+  - vendor/phpstan/phpstan-phpunit/extension.neon
+  - vendor/phpstan/phpstan-phpunit/rules.neon
