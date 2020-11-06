@@ -1,13 +1,12 @@
 # Tuzex / Responder-bundle
-[![Build Status](https://travis-ci.org/Tuzex/easy-response-bundle.svg?branch=master)](https://travis-ci.org/github/Tuzex/easy-response-bundle)
 
-Lazy responder for Symfony 4.4<. The final response is created according to a specific result.
+Intergation of smart responder based on the Symfony HTTP Foundation to Symfony 4.3 and higher.
 
-Installation
-------------
+Install
+-------
 
-The best way to install Tuzex/easy-response-bundle is using the [Composer](http://getcomposer.org/):
+The best way to install Tuzex/responder-bundle is using the [Composer](http://getcomposer.org/):
 
 ```sh
-$ composer require tuzex/easy-response-bundle
+$ composer require tuzex/responder-bundle
 ```
