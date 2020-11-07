@@ -27,7 +27,7 @@ final class ResponderListenerTest extends TestCase
         $responderListener = new ResponderListener($this->initResponder());
         $responderListener($viewEvent);
 
-        $this->assertSame($response, $viewEvent->getResponse());
+        $this->assertEquals($response, $viewEvent->getResponse());
     }
 
     public function provideEvents(): array
