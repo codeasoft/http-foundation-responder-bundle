@@ -30,7 +30,7 @@
         <service id="Tuzex\Responder\Responder"/>
 
         <service id="Tuzex\Bundle\Responder\ResponderListener">
-            <tag name="kernel.event_listener" event="kernel.view" priority="1024"/>
+            <tag name="kernel.event_listener" event="kernel.view" priority="-256"/>
         </service>
     </services>
 </container>
