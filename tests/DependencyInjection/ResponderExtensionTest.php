@@ -71,8 +71,8 @@ final class ResponderExtensionTest extends TestCase
             'Tuzex\Responder\Result\Payload\TwigTransformer' => [
                 'id' => 'Tuzex\Responder\Result\Payload\TwigTransformer',
             ],
-            'Tuzex\Responder\Result\Redirect\RedirectToRefererTransformer' => [
-                'id' => 'Tuzex\Responder\Result\Redirect\RedirectToRefererTransformer',
+            'Tuzex\Responder\Result\Redirect\RedirectToReferrerTransformer' => [
+                'id' => 'Tuzex\Responder\Result\Redirect\RedirectToReferrerTransformer',
             ],
             'Tuzex\Responder\Result\Redirect\RedirectToRouteTransformer' => [
                 'id' => 'Tuzex\Responder\Result\Redirect\RedirectToRouteTransformer',

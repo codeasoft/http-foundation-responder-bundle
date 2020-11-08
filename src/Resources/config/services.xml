@@ -22,7 +22,7 @@
         <service id="Tuzex\Responder\Result\Payload\JsonTransformer"/>
         <service id="Tuzex\Responder\Result\Payload\TextTransformer"/>
         <service id="Tuzex\Responder\Result\Payload\TwigTransformer"/>
-        <service id="Tuzex\Responder\Result\Redirect\RedirectToRefererTransformer"/>
+        <service id="Tuzex\Responder\Result\Redirect\RedirectToReferrerTransformer"/>
         <service id="Tuzex\Responder\Result\Redirect\RedirectToRouteTransformer"/>
         <service id="Tuzex\Responder\Result\Redirect\RedirectToSameUrlTransformer"/>
         <service id="Tuzex\Responder\Result\Redirect\RedirectToUrlTransformer"/>
