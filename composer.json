@@ -26,12 +26,12 @@
     "php": "7.4.*",
     "symfony/framework-bundle": "4.3.*|4.4.*|5.*",
     "symfony/twig-bundle": "4.3.*|4.4.*|5.*",
-    "tuzex/responder": "0.1.0"
+    "tuzex/responder": "0.1.*"
   },
   "require-dev": {
     "phpstan/phpstan": "0.12.*",
     "phpstan/phpstan-phpunit": "0.12.*",
-    "phpunit/phpunit": "9.4.*",
-    "symplify/easy-coding-standard": "8.3.*"
+    "phpunit/phpunit": "9.5.*",
+    "symplify/easy-coding-standard": "9.0.*"
   }
 }
