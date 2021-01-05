@@ -6,13 +6,13 @@ namespace Tuzex\Bundle\Responder\Test\DependencyInjection\Compilation;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\Reference;
-use Tuzex\Bundle\Responder\DependencyInjection\Compilation\RegisterProcessResultMiddlewareCompilerPass;
+use Tuzex\Bundle\Responder\DependencyInjection\Compilation\RegisterTransformResultMiddlewareCompilerPass;
 use Tuzex\Bundle\Responder\Test\FakeContainerBuilderFactory;
-use Tuzex\Responder\Middleware\ProcessResultMiddleware;
+use Tuzex\Responder\Middleware\TransformResultMiddleware;
 use Tuzex\Responder\Result\Payload\JsonTransformer;
 use Tuzex\Responder\Result\Payload\TextTransformer;
 
-final class RegisterProcessResultMiddlewareCompilerPassTest extends TestCase
+final class RegisterTransformResultMiddlewareCompilerPassTest extends TestCase
 {
     /**
      * @dataProvider provideResultTransformerIds
@@ -21,12 +21,12 @@ final class RegisterProcessResultMiddlewareCompilerPassTest extends TestCase
     {
         $containerBuilder = FakeContainerBuilderFactory::withResultTransformers($trasformerIds);
 
-        $compilerPass = new RegisterProcessResultMiddlewareCompilerPass();
+        $compilerPass = new RegisterTransformResultMiddlewareCompilerPass();
         $compilerPass->process($containerBuilder);
 
         $this->assertSame($trasformerIds, array_map(
             fn (Reference $reference): string => $reference->__toString(),
-            $containerBuilder->getDefinition(ProcessResultMiddleware::class)->getArguments()
+            $containerBuilder->getDefinition(TransformResultMiddleware::class)->getArguments()
         ));
     }
 

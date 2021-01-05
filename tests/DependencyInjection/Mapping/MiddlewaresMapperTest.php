@@ -9,7 +9,7 @@ use RuntimeException;
 use Symfony\Component\DependencyInjection\Reference;
 use Tuzex\Bundle\Responder\DependencyInjection\Mapping\MiddlewaresMapper;
 use Tuzex\Bundle\Responder\Test\FakeContainerBuilderFactory;
-use Tuzex\Responder\Middleware\ProcessResultMiddleware;
+use Tuzex\Responder\Middleware\TransformResultMiddleware;
 use Tuzex\Responder\Responder;
 
 final class MiddlewaresMapperTest extends TestCase
@@ -36,13 +36,13 @@ final class MiddlewaresMapperTest extends TestCase
             ],
             'one' => [
                 'middlewares' => [
-                    ProcessResultMiddleware::class,
+                    TransformResultMiddleware::class,
                 ],
             ],
             'several' => [
                 'middlewares' => [
-                    ProcessResultMiddleware::class,
-                    ProcessResultMiddleware::class,
+                    TransformResultMiddleware::class,
+                    TransformResultMiddleware::class,
                 ],
             ],
         ];

@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 use Tuzex\Bundle\Responder\DependencyInjection\Mapping\MiddlewaresMapper;
-use Tuzex\Responder\Middleware\ProcessResultMiddleware;
+use Tuzex\Responder\Middleware\TransformResultMiddleware;
 use Tuzex\Responder\Middlewares;
 
 final class RegisterMiddlewaresCompilerPass implements CompilerPassInterface
@@ -24,7 +24,7 @@ final class RegisterMiddlewaresCompilerPass implements CompilerPassInterface
     public function process(ContainerBuilder $containerBuilder): void
     {
         $middlewaresDefinition = new Definition(Middlewares::class, [
-            new Reference(ProcessResultMiddleware::class),
+            new Reference(TransformResultMiddleware::class),
         ]);
 
         $middlewaresDefinition->addMethodCall('add', $this->middlewaresMapper->map($containerBuilder));

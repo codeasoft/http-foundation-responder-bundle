@@ -8,21 +8,21 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Tuzex\Bundle\Responder\DependencyInjection\Mapping\ResultTransformersMapper;
-use Tuzex\Responder\Middleware\ProcessResultMiddleware;
+use Tuzex\Responder\Middleware\TransformResultMiddleware;
 
-final class RegisterProcessResultMiddlewareCompilerPass implements CompilerPassInterface
+final class RegisterTransformResultMiddlewareCompilerPass implements CompilerPassInterface
 {
-    private ResultTransformersMapper $resultsTransformerMapper;
+    private ResultTransformersMapper $resultsTransformersMapper;
 
     public function __construct()
     {
-        $this->resultsTransformerMapper = new ResultTransformersMapper();
+        $this->resultsTransformersMapper = new ResultTransformersMapper();
     }
 
     public function process(ContainerBuilder $containerBuilder): void
     {
-        $middlewareClass = ProcessResultMiddleware::class;
-        $resultTransformersReference = $this->resultsTransformerMapper->map($containerBuilder);
+        $middlewareClass = TransformResultMiddleware::class;
+        $resultTransformersReference = $this->resultsTransformersMapper->map($containerBuilder);
 
         $containerBuilder->setDefinition($middlewareClass, new Definition($middlewareClass, $resultTransformersReference));
     }

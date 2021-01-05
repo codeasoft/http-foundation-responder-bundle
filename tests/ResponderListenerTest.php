@@ -11,7 +11,7 @@ use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Tuzex\Bundle\Responder\ResponderListener;
 use Tuzex\Responder\Bridge\HttpFoundation\Response\ResponseFactory;
-use Tuzex\Responder\Middleware\ProcessResultMiddleware;
+use Tuzex\Responder\Middleware\TransformResultMiddleware;
 use Tuzex\Responder\Middlewares;
 use Tuzex\Responder\Responder;
 use Tuzex\Responder\Result\Payload\Text;
@@ -68,7 +68,7 @@ final class ResponderListenerTest extends TestCase
     private function initResponder(): Responder
     {
         $middlewares = new Middlewares(
-            new ProcessResultMiddleware($this->initTransformer())
+            new TransformResultMiddleware($this->initTransformer())
         );
 
         return new Responder($middlewares);

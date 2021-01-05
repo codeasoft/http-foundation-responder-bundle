@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\Reference;
 use Tuzex\Bundle\Responder\DependencyInjection\Compilation\RegisterMiddlewaresCompilerPass;
 use Tuzex\Bundle\Responder\Test\FakeContainerBuilderFactory;
-use Tuzex\Responder\Middleware\ProcessResultMiddleware;
+use Tuzex\Responder\Middleware\TransformResultMiddleware;
 use Tuzex\Responder\Middlewares;
 
 final class RegisterMiddlewaresCompilerPassTest extends TestCase
@@ -41,13 +41,13 @@ final class RegisterMiddlewaresCompilerPassTest extends TestCase
             ],
             'one' => [
                 'middlewares' => [
-                    ProcessResultMiddleware::class,
+                    TransformResultMiddleware::class,
                 ],
             ],
             'several' => [
                 'middlewares' => [
-                    ProcessResultMiddleware::class,
-                    ProcessResultMiddleware::class,
+                    TransformResultMiddleware::class,
+                    TransformResultMiddleware::class,
                 ],
             ],
         ];
