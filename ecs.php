@@ -26,14 +26,16 @@ return static function (ContainerConfigurator $containerConfigurator): void
     ]);
 
     $parameters->set(Option::SKIP, [
+        PhpCsFixer\Fixer\Basic\BracesFixer::class => null,
         PhpCsFixer\Fixer\Operator\NotOperatorWithSuccessorSpaceFixer::class => null,
-        PropertyTypeHintSniff::class . 'MissingTraversableTypeHintSpecification' => null,
-        ReturnTypeHintSniff::class . 'MissingTraversableTypeHintSpecification' => null,
         PhpCsFixer\Fixer\Whitespace\MethodChainingIndentationFixer::class => [
-            __DIR__ . '/src/DependencyInjection/Configuration.php'
+            __DIR__ . '/src/DependencyInjection/Configuration.php',
         ],
         PhpCsFixer\Fixer\PhpUnit\PhpUnitStrictFixer::class => [
-            __DIR__ . '/tests/ResponderListenerTest.php'
+            __DIR__ . '/tests/ResponderListenerTest.php',
         ],
+        PropertyTypeHintSniff::class . 'MissingTraversableTypeHintSpecification' => null,
+        ReturnTypeHintSniff::class . 'MissingTraversableTypeHintSpecification' => null,
+        SlevomatCodingStandard\Sniffs\Classes\DisallowMultiPropertyDefinitionSniff::class . '.DisallowedMultiPropertyDefinition' => null,
     ]);
 };
