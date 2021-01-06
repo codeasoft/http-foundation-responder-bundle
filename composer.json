@@ -10,6 +10,10 @@
     }
   ],
   "config": {
+    "platform": {
+      "php": "8.0.0",
+      "ext-intl": "1"
+    },
     "sort-packages": true
   },
   "autoload": {
@@ -23,7 +27,7 @@
     }
   },
   "require": {
-    "php": "7.4.*",
+    "php": "8.*",
     "symfony/framework-bundle": "4.3.*|4.4.*|5.*",
     "symfony/twig-bundle": "4.3.*|4.4.*|5.*",
     "tuzex/responder": "0.1.1"
