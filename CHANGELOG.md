@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.2.0] - 2021-01-06
 
 ### Changed
 - **[BC BREAK]** Bump minimal PHP version to 8.*
@@ -19,5 +19,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Use ```TransformResultMiddleware``` instead of ```ProcessResultMiddleware```
 
-[Unreleased]: https://github.com/Tuzex/responder/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/Tuzex/responder/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/Tuzex/responder-bundle/releases/tag/v0.2.0
 [0.1.1]: https://github.com/Tuzex/responder-bundle/releases/tag/v0.1.1
