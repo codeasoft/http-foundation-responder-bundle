@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\Reference;
 use Tuzex\Bundle\Responder\DependencyInjection\Mapping\ResultTransformersMapper;
 use Tuzex\Bundle\Responder\Test\FakeContainerBuilderFactory;
-use Tuzex\Responder\Result\Payload\JsonTransformer;
+use Tuzex\Responder\Result\Payload\JsonDataTransformer;
 use Tuzex\Responder\Result\Payload\TextTransformer;
 
 final class ResultTransformersMapperTest extends TestCase
@@ -41,7 +41,7 @@ final class ResultTransformersMapperTest extends TestCase
             'several' => [
                 'transformers' => [
                     TextTransformer::class,
-                    JsonTransformer::class,
+                    JsonDataTransformer::class,
                 ],
             ],
         ];

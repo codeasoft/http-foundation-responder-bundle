@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\Reference;
 use Tuzex\Bundle\Responder\DependencyInjection\Compilation\RegisterTransformResultMiddlewareCompilerPass;
 use Tuzex\Bundle\Responder\Test\FakeContainerBuilderFactory;
 use Tuzex\Responder\Middleware\TransformResultMiddleware;
-use Tuzex\Responder\Result\Payload\JsonTransformer;
+use Tuzex\Responder\Result\Payload\JsonDataTransformer;
 use Tuzex\Responder\Result\Payload\TextTransformer;
 
 final class RegisterTransformResultMiddlewareCompilerPassTest extends TestCase
@@ -44,7 +44,7 @@ final class RegisterTransformResultMiddlewareCompilerPassTest extends TestCase
             'several' => [
                 'transformers' => [
                     TextTransformer::class,
-                    JsonTransformer::class,
+                    JsonDataTransformer::class,
                 ],
             ],
         ];

@@ -14,7 +14,7 @@ use Tuzex\Responder\Bridge\HttpFoundation\Response\ResponseFactory;
 use Tuzex\Responder\Middleware\TransformResultMiddleware;
 use Tuzex\Responder\Middlewares;
 use Tuzex\Responder\Responder;
-use Tuzex\Responder\Result\Payload\Text;
+use Tuzex\Responder\Result\Payload\PlainText;
 use Tuzex\Responder\Result\Payload\TextTransformer;
 
 final class ResponderListenerTest extends TestCase
@@ -33,7 +33,7 @@ final class ResponderListenerTest extends TestCase
     public function provideEvents(): array
     {
         $transformer = $this->initTransformer();
-        $result = Text::send('Hello World!');
+        $result = PlainText::send('Hello World!');
 
         $results = [
             'result' => [

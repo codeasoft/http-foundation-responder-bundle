@@ -19,9 +19,9 @@
         <service id="Tuzex\Responder\Service\UriProvider"/>
 
         <service id="Tuzex\Responder\Result\Payload\FileTransformer"/>
-        <service id="Tuzex\Responder\Result\Payload\JsonTransformer"/>
+        <service id="Tuzex\Responder\Result\Payload\JsonDataTransformer"/>
         <service id="Tuzex\Responder\Result\Payload\TextTransformer"/>
-        <service id="Tuzex\Responder\Result\Payload\TwigTransformer"/>
+        <service id="Tuzex\Responder\Result\Payload\TwigTemplateTransformer"/>
         <service id="Tuzex\Responder\Result\Redirect\RedirectToReferrerTransformer"/>
         <service id="Tuzex\Responder\Result\Redirect\RedirectToRouteTransformer"/>
         <service id="Tuzex\Responder\Result\Redirect\RedirectToSameUrlTransformer"/>

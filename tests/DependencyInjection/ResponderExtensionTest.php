@@ -7,7 +7,26 @@ namespace Tuzex\Bundle\Responder\Test\DependencyInjection;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Tuzex\Bundle\Responder\DependencyInjection\ResponderExtension;
+use Tuzex\Bundle\Responder\ResponderListener;
+use Tuzex\Responder\Bridge\HttpFoundation\RequestAccessor;
+use Tuzex\Responder\Bridge\HttpFoundation\Response\BinaryFileResponseFactory;
+use Tuzex\Responder\Bridge\HttpFoundation\Response\JsonResponseFactory;
+use Tuzex\Responder\Bridge\HttpFoundation\Response\RedirectResponseFactory;
+use Tuzex\Responder\Bridge\HttpFoundation\Response\ResponseFactory;
+use Tuzex\Responder\Bridge\Twig\TwigTemplateRenderer;
+use Tuzex\Responder\Responder;
+use Tuzex\Responder\Result\Payload\FileTransformer;
+use Tuzex\Responder\Result\Payload\JsonDataTransformer;
+use Tuzex\Responder\Result\Payload\TextTransformer;
+use Tuzex\Responder\Result\Payload\TwigTemplateTransformer;
+use Tuzex\Responder\Result\Redirect\RedirectToReferrerTransformer;
+use Tuzex\Responder\Result\Redirect\RedirectToRouteTransformer;
+use Tuzex\Responder\Result\Redirect\RedirectToSameUrlTransformer;
+use Tuzex\Responder\Result\Redirect\RedirectToUrlTransformer;
 use Tuzex\Responder\Result\ResultTransformer;
+use Tuzex\Responder\Service\ReferrerProvider;
+use Tuzex\Responder\Service\TemplateRenderer;
+use Tuzex\Responder\Service\UriProvider;
 
 final class ResponderExtensionTest extends TestCase
 {
@@ -32,64 +51,34 @@ final class ResponderExtensionTest extends TestCase
         $this->assertTrue($this->containerBuilder->hasDefinition($serviceId));
     }
 
-    public function provideServiceIds(): array
+    public function provideServiceIds(): iterable
     {
-        return [
-            'Tuzex\Responder\Bridge\HttpFoundation\RequestAccessor' => [
-                'id' => 'Tuzex\Responder\Bridge\HttpFoundation\RequestAccessor',
-            ],
-            'Tuzex\Responder\Bridge\HttpFoundation\Response\BinaryFileResponseFactory' => [
-                'id' => 'Tuzex\Responder\Bridge\HttpFoundation\Response\BinaryFileResponseFactory',
-            ],
-            'Tuzex\Responder\Bridge\HttpFoundation\Response\JsonResponseFactory' => [
-                'id' => 'Tuzex\Responder\Bridge\HttpFoundation\Response\JsonResponseFactory',
-            ],
-            'Tuzex\Responder\Bridge\HttpFoundation\Response\RedirectResponseFactory' => [
-                'id' => 'Tuzex\Responder\Bridge\HttpFoundation\Response\RedirectResponseFactory',
-            ],
-            'Tuzex\Responder\Bridge\HttpFoundation\Response\ResponseFactory' => [
-                'id' => 'Tuzex\Responder\Bridge\HttpFoundation\Response\ResponseFactory',
-            ],
-            'Tuzex\Responder\Bridge\Twig\TwigTemplateRenderer' => [
-                'id' => 'Tuzex\Responder\Bridge\Twig\TwigTemplateRenderer',
-            ],
-            'Tuzex\Responder\Service\ReferrerProvider' => [
-                'id' => 'Tuzex\Responder\Service\ReferrerProvider',
-            ],
-            'Tuzex\Responder\Service\UriProvider' => [
-                'id' => 'Tuzex\Responder\Service\UriProvider',
-            ],
-            'Tuzex\Responder\Result\Payload\FileTransformer' => [
-                'id' => 'Tuzex\Responder\Result\Payload\FileTransformer',
-            ],
-            'Tuzex\Responder\Result\Payload\JsonTransformer' => [
-                'id' => 'Tuzex\Responder\Result\Payload\JsonTransformer',
-            ],
-            'Tuzex\Responder\Result\Payload\TextTransformer' => [
-                'id' => 'Tuzex\Responder\Result\Payload\TextTransformer',
-            ],
-            'Tuzex\Responder\Result\Payload\TwigTransformer' => [
-                'id' => 'Tuzex\Responder\Result\Payload\TwigTransformer',
-            ],
-            'Tuzex\Responder\Result\Redirect\RedirectToReferrerTransformer' => [
-                'id' => 'Tuzex\Responder\Result\Redirect\RedirectToReferrerTransformer',
-            ],
-            'Tuzex\Responder\Result\Redirect\RedirectToRouteTransformer' => [
-                'id' => 'Tuzex\Responder\Result\Redirect\RedirectToRouteTransformer',
-            ],
-            'Tuzex\Responder\Result\Redirect\RedirectToSameUrlTransformer' => [
-                'id' => 'Tuzex\Responder\Result\Redirect\RedirectToSameUrlTransformer',
-            ],
-            'Tuzex\Responder\Result\Redirect\RedirectToUrlTransformer' => [
-                'id' => 'Tuzex\Responder\Result\Redirect\RedirectToUrlTransformer',
-            ],
-            'Tuzex\Responder\Responder' => [
-                'id' => 'Tuzex\Responder\Responder',
-            ],
-            'Tuzex\Bundle\Responder\ResponderListener' => [
-                'id' => 'Tuzex\Bundle\Responder\ResponderListener',
-            ],
+        $services = [
+            RequestAccessor::class,
+            BinaryFileResponseFactory::class,
+            JsonResponseFactory::class,
+            RedirectResponseFactory::class,
+            ResponseFactory::class,
+            TwigTemplateRenderer::class,
+            ReferrerProvider::class,
+            UriProvider::class,
+            FileTransformer::class,
+            JsonDataTransformer::class,
+            TextTransformer::class,
+            TwigTemplateTransformer::class,
+            RedirectToReferrerTransformer::class,
+            RedirectToRouteTransformer::class,
+            RedirectToSameUrlTransformer::class,
+            RedirectToUrlTransformer::class,
+            Responder::class,
+            ResponderListener::class,
         ];
+
+        foreach ($services as $serviceId) {
+            yield $serviceId => [
+                'serviceId' => $serviceId,
+            ];
+        }
     }
 
     /**
@@ -106,9 +95,9 @@ final class ResponderExtensionTest extends TestCase
     public function provideServiceAliases(): array
     {
         return [
-            'Tuzex\Responder\Service\TemplateRenderer' => [
-                'id' => 'Tuzex\Responder\Service\TemplateRenderer',
-                'alias' => 'Tuzex\Responder\Bridge\Twig\TwigTemplateRenderer',
+            TemplateRenderer::class => [
+                'serviceId' => TemplateRenderer::class,
+                'serviceAlias' => TwigTemplateRenderer::class,
             ],
         ];
     }
@@ -116,20 +105,20 @@ final class ResponderExtensionTest extends TestCase
     /**
      * @dataProvider provideTransformerSettings
      */
-    public function testItRegistersAutoconfigurationOfTransformers(string $id, string $tag): void
+    public function testItRegistersAutoconfigurationOfTransformers(string $serviceId, string $serviceTag): void
     {
         $this->responderExtension->prepend($this->containerBuilder);
 
-        $this->assertArrayHasKey($id, $this->containerBuilder->getAutoconfiguredInstanceof());
-        $this->assertArrayHasKey($tag, $this->containerBuilder->getAutoconfiguredInstanceof()[$id]->getTags());
+        $this->assertArrayHasKey($serviceId, $this->containerBuilder->getAutoconfiguredInstanceof());
+        $this->assertArrayHasKey($serviceTag, $this->containerBuilder->getAutoconfiguredInstanceof()[$serviceId]->getTags());
     }
 
     public function provideTransformerSettings(): array
     {
         return [
-            'result-transformer' => [
-                'id' => ResultTransformer::class,
-                'tag' => 'tuzex.responder.result_transformer',
+            ResultTransformer::class => [
+                'serviceId' => ResultTransformer::class,
+                'serviceTag' => 'tuzex.responder.result_transformer',
             ],
         ];
     }
