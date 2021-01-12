@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use SlevomatCodingStandard\Sniffs\TypeHints\PropertyTypeHintSniff;
-use SlevomatCodingStandard\Sniffs\TypeHints\ReturnTypeHintSniff;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\EasyCodingStandard\ValueObject\Option;
 use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
@@ -31,11 +29,9 @@ return static function (ContainerConfigurator $containerConfigurator): void
         PhpCsFixer\Fixer\Whitespace\MethodChainingIndentationFixer::class => [
             __DIR__ . '/src/DependencyInjection/Configuration.php',
         ],
-        PhpCsFixer\Fixer\PhpUnit\PhpUnitStrictFixer::class => [
-            __DIR__ . '/tests/ResponderListenerTest.php',
-        ],
-        PropertyTypeHintSniff::class . 'MissingTraversableTypeHintSpecification' => null,
-        ReturnTypeHintSniff::class . 'MissingTraversableTypeHintSpecification' => null,
+        Symplify\CodingStandard\Fixer\Spacing\StandaloneLinePromotedPropertyFixer::class => null,
+        SlevomatCodingStandard\Sniffs\TypeHints\PropertyTypeHintSniff::class . 'MissingTraversableTypeHintSpecification' => null,
+        SlevomatCodingStandard\Sniffs\TypeHints\ReturnTypeHintSniff::class . 'MissingTraversableTypeHintSpecification' => null,
         SlevomatCodingStandard\Sniffs\Classes\DisallowMultiPropertyDefinitionSniff::class . '.DisallowedMultiPropertyDefinition' => null,
     ]);
 };
