@@ -17,17 +17,17 @@ final class RegisterTransformResultMiddlewareCompilerPassTest extends TestCase
     /**
      * @dataProvider provideResultTransformerIds
      */
-    public function testItRegisterMiddlewareWithResultTransformers(array $trasformerIds): void
+    public function testItRegistersMiddlewareWithResultTransformers(array $trasformerIds): void
     {
         $containerBuilder = FakeContainerBuilderFactory::withResultTransformers($trasformerIds);
 
         $compilerPass = new RegisterTransformResultMiddlewareCompilerPass();
         $compilerPass->process($containerBuilder);
 
-        $this->assertSame($trasformerIds, array_map(
-            fn (Reference $reference): string => $reference->__toString(),
-            $containerBuilder->getDefinition(TransformResultMiddleware::class)->getArguments()
-        ));
+        $middlewareDefinition = $containerBuilder->getDefinition(TransformResultMiddleware::class);
+        $middlewareTransformers = $middlewareDefinition->getArguments();
+
+        $this->assertSame($trasformerIds, array_map(fn (Reference $reference): string => $reference->__toString(), $middlewareTransformers));
     }
 
     public function provideResultTransformerIds(): array

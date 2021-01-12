@@ -19,9 +19,7 @@ final class ResultTransformersMapperTest extends TestCase
     public function testItMapsRegisteredResultTransformers(array $tranfromerIds): void
     {
         $resultTransformersMapper = new ResultTransformersMapper();
-        $resultTransformers = $resultTransformersMapper->map(
-            FakeContainerBuilderFactory::withResultTransformers($tranfromerIds)
-        );
+        $resultTransformers = $resultTransformersMapper->map(FakeContainerBuilderFactory::withResultTransformers($tranfromerIds));
 
         $this->assertCount(count($tranfromerIds), $resultTransformers);
         $this->assertContainsOnlyInstancesOf(Reference::class, $resultTransformers);

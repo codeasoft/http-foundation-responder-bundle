@@ -14,13 +14,21 @@ use Tuzex\Responder\Responder;
 
 final class MiddlewaresMapperTest extends TestCase
 {
+    private MiddlewaresMapper $middlewareMapper;
+
+    protected function setUp(): void
+    {
+        $this->middlewareMapper = new MiddlewaresMapper();
+
+        parent::setUp();
+    }
+
     /**
      * @dataProvider provideMiddlewareIds
      */
     public function testItMapsRegisteredMiddlewares(array $middlewareIds): void
     {
-        $middlewaresMapper = new MiddlewaresMapper();
-        $middlewares = $middlewaresMapper->map(
+        $middlewares = $this->middlewareMapper->map(
             FakeContainerBuilderFactory::withMiddlewares($middlewareIds)
         );
 
@@ -50,10 +58,9 @@ final class MiddlewaresMapperTest extends TestCase
 
     public function testItThrowsExceptionIfRegisteredMiddlewareNotImplementedMiddlewareInterface(): void
     {
-        $containerBuilder = FakeContainerBuilderFactory::withMiddlewares([Responder::class]);
-        $middlewaresMapper = new MiddlewaresMapper();
-
         $this->expectException(RuntimeException::class);
-        $middlewaresMapper->map($containerBuilder);
+        $this->middlewareMapper->map(
+            FakeContainerBuilderFactory::withMiddlewares([Responder::class])
+        );
     }
 }

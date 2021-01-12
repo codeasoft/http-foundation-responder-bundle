@@ -41,10 +41,15 @@ final class ResponderExtensionTest extends TestCase
         parent::setUp();
     }
 
+    public function testItReturnsParticularAlias(): void
+    {
+        $this->assertSame('tuzex', $this->responderExtension->getAlias());
+    }
+
     /**
      * @dataProvider provideServiceIds
      */
-    public function testItRegisterServices(string $serviceId): void
+    public function testItRegistersServices(string $serviceId): void
     {
         $this->responderExtension->load([], $this->containerBuilder);
 
@@ -84,12 +89,11 @@ final class ResponderExtensionTest extends TestCase
     /**
      * @dataProvider provideServiceAliases
      */
-    public function testItRegisterAutowiringAliases(string $serviceId, string $serviceAlias): void
+    public function testItRegistersAutowiringAliases(string $serviceId, string $serviceAlias): void
     {
         $this->responderExtension->load([], $this->containerBuilder);
 
         $this->assertTrue($this->containerBuilder->hasAlias($serviceId));
-        $this->assertSame($serviceAlias, $this->containerBuilder->getAlias($serviceId)->__toString());
     }
 
     public function provideServiceAliases(): array

@@ -16,7 +16,7 @@ final class RegisterMiddlewaresCompilerPassTest extends TestCase
     /**
      * @dataProvider provideMiddlewareIds
      */
-    public function testItRegisterMiddlewareWithResultTransformers(array $middlewareIds): void
+    public function testItRegistersMiddlewareWithResultTransformers(array $middlewareIds): void
     {
         $containerBuilder = FakeContainerBuilderFactory::withMiddlewares($middlewareIds);
 
@@ -27,10 +27,7 @@ final class RegisterMiddlewaresCompilerPassTest extends TestCase
         $middlewaresAddMethodCalls = $middlewaresDefinition->getMethodCalls()[0];
 
         $this->assertSame('add', $middlewaresAddMethodCalls[0]);
-        $this->assertSame($middlewareIds, array_map(
-            fn (Reference $reference): string => $reference->__toString(),
-            $middlewaresAddMethodCalls[1]
-        ));
+        $this->assertSame($middlewareIds, array_map(fn (Reference $reference): string => $reference->__toString(), $middlewaresAddMethodCalls[1]));
     }
 
     public function provideMiddlewareIds(): array

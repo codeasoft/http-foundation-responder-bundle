@@ -22,60 +22,48 @@ final class ResponderListenerTest extends TestCase
     /**
      * @dataProvider provideEvents
      */
-    public function testItCreatesResponseFromControllerResult(ViewEvent $viewEvent, ?Response $response): void
+    public function testItCreatesResponseFromControllerResult(ViewEvent $viewEvent, bool $expectResponse): void
     {
         $responderListener = new ResponderListener($this->initResponder());
         $responderListener($viewEvent);
 
-        $this->assertEquals($response, $viewEvent->getResponse());
+        $this->assertSame($expectResponse, $viewEvent->hasResponse());
     }
 
     public function provideEvents(): array
     {
-        $transformer = $this->initTransformer();
-        $result = PlainText::send('Hello World!');
+        $httpKernel = $this->createMock(HttpKernelInterface::class);
+        $request = $this->createMock(Request::class);
 
-        $results = [
+        $controllerResults = [
             'result' => [
-                'result' => $result,
-                'response' => $transformer->transform($result),
+                'controllerResult' => PlainText::send('Hello World!'),
+                'expectResponse' => true,
             ],
             'response' => [
-                'result' => new Response(),
-                'response' => null,
+                'controllerResult' => new Response(),
+                'expectResponse' => false,
             ],
-            'string' => [
-                'result' => '',
-                'response' => null,
+            'scalar' => [
+                'controllerResult' => '',
+                'expectResponse' => false,
             ],
         ];
 
-        return array_map(function (array $data): array {
-            $event = new ViewEvent(
-                $this->createMock(HttpKernelInterface::class),
-                $this->createMock(Request::class),
-                1,
-                $data['result']
-            );
-
-            return [
-                'viewEvent' => $event,
-                'expectedResponse' => $data['response'],
-            ];
-        }, $results);
+        return array_map(
+            fn (array $definition) => [
+                'viewEvent' => new ViewEvent($httpKernel, $request, 1, $definition['controllerResult']),
+                'expectResponse' => $definition['expectResponse'],
+            ], $controllerResults
+        );
     }
 
     private function initResponder(): Responder
     {
-        $middlewares = new Middlewares(
-            new TransformResultMiddleware($this->initTransformer())
+        $transformer = new TextTransformer(new ResponseFactory());
+
+        return new Responder(
+            new Middlewares(new TransformResultMiddleware($transformer))
         );
-
-        return new Responder($middlewares);
-    }
-
-    private function initTransformer(): TextTransformer
-    {
-        return new TextTransformer(new ResponseFactory());
     }
 }
