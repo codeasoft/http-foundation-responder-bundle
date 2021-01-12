@@ -13,14 +13,20 @@ jobs:
 
     name: PHP ${{ matrix.php }} - Unit Tests
     steps:
-      - uses: actions/checkout@v2
-      - uses: shivammathur/setup-php@v2
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           coverage: none
 
-      - run: composer install --no-progress
-      - run: vendor/bin/phpunit -c phpunit.xml
+      - name: Install PHP dependencies
+        run: composer install --no-progress
+
+      - name: Run unit tests
+        run: vendor/bin/phpunit -c phpunit.xml
 
   phpstan:
     runs-on: ubuntu-latest
@@ -30,11 +36,17 @@ jobs:
 
     name: PHP ${{ matrix.php }} - Static Analyse
     steps:
-      - uses: actions/checkout@v2
-      - uses: shivammathur/setup-php@v1
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v1
         with:
           php-version: ${{ matrix.php }}
           coverage: none
 
-      - run: composer install --no-progress
-      - run: vendor/bin/phpstan analyse -c phpstan.neon
+      - name: Install PHP dependencies
+        run: composer install --no-progress
+
+      - name: Run static analyse
+        run: vendor/bin/phpstan analyse -c phpstan.neon

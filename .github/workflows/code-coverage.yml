@@ -16,19 +16,19 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Setup PHP
+      - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           coverage: pcov
 
-      - name: Composer install
+      - name: Install PHP dependencies
         run: composer install --no-progress
 
       - name: Generate code coverage
         run: vendor/bin/phpunit -c phpunit.xml --coverage-clover clover.xml
 
-      - name: Upload to Coveralls
+      - name: Send to Coveralls
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

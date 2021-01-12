@@ -13,10 +13,14 @@ jobs:
 
     name: PHP ${{ matrix.php }} - Composer validation
     steps:
-      - uses: actions/checkout@v2
-      - uses: shivammathur/setup-php@v2
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           coverage: none
 
-      - run: composer validate --no-check-all --strict
+      - name: Validate composer scheme
+        run: composer validate --no-check-all --strict

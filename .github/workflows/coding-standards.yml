@@ -13,11 +13,17 @@ jobs:
 
     name: PHP ${{ matrix.php }} - Coding Standards
     steps:
-      - uses: actions/checkout@v2
-      - uses: shivammathur/setup-php@v2
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           coverage: none
 
-      - run: composer install --no-progress
-      - run: vendor/bin/ecs check -c ecs.php
+      - name: Install PHP dependencies
+        run: composer install --no-progress
+
+      - name: Check coding standards
+        run: vendor/bin/ecs check -c ecs.php
