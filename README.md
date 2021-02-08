@@ -1,4 +1,5 @@
 # Tuzex / Responder-bundle
+[![Coverage Status](https://coveralls.io/repos/github/Tuzex/responder-bundle/badge.svg?branch=master)](https://coveralls.io/github/Tuzex/responder-bundle?branch=master)
 
 Intergation of smart responder based on the Symfony HTTP Foundation to Symfony 4.3 and higher.
 
