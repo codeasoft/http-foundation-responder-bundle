@@ -32,9 +32,5 @@ final class ResponderExtension extends Extension implements ExtensionInterface, 
         $loader = new XmlFileLoader($containerBuilder, $this->fileLocator);
         $loader->load('services.xml');
     }
-
-    public function getAlias(): string
-    {
-        return 'tuzex';
-    }
+}
 }

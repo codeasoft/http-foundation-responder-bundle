@@ -41,11 +41,6 @@ final class ResponderExtensionTest extends TestCase
         parent::setUp();
     }
 
-    public function testItReturnsParticularAlias(): void
-    {
-        $this->assertSame('tuzex', $this->responderExtension->getAlias());
-    }
-
     /**
      * @dataProvider provideServiceIds
      */
