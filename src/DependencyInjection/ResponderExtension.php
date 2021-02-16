@@ -10,7 +10,8 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
-use Tuzex\Responder\Result\ResultTransformer;
+use Tuzex\Responder\Middleware;
+use Tuzex\Responder\ResponseFactory;
 
 final class ResponderExtension extends Extension implements ExtensionInterface, PrependExtensionInterface
 {
@@ -21,16 +22,18 @@ final class ResponderExtension extends Extension implements ExtensionInterface, 
         $this->fileLocator = new FileLocator(__DIR__.'/../Resources/config');
     }
 
-    public function prepend(ContainerBuilder $containerBuilder): void
+    public function prepend(ContainerBuilder $container): void
     {
-        $containerBuilder->registerForAutoconfiguration(ResultTransformer::class)
-            ->addTag('tuzex.responder.result_transformer');
+        $container->registerForAutoconfiguration(Middleware::class)
+            ->addTag('tuzex.responder.middleware');
+
+        $container->registerForAutoconfiguration(ResponseFactory::class)
+            ->addTag('tuzex.responder.response_factory');
     }
 
-    public function load(array $configs, ContainerBuilder $containerBuilder): void
+    public function load(array $configs, ContainerBuilder $container): void
     {
-        $loader = new XmlFileLoader($containerBuilder, $this->fileLocator);
+        $loader = new XmlFileLoader($container, $this->fileLocator);
         $loader->load('services.xml');
     }
-}
 }
