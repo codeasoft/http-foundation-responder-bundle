@@ -9,28 +9,25 @@ use Symfony\Component\DependencyInjection\Definition;
 
 final class FakeContainerBuilderFactory
 {
-    public static function withResultTransformers(array $serviceIds): ContainerBuilder
+    public static function withMiddlewares(array $serviceIds): ContainerBuilder
+    {
+        return self::create($serviceIds, 'tuzex.responder.middleware');
+    }
+
+    public static function withResponseFactory(array $serviceIds): ContainerBuilder
+    {
+        return self::create($serviceIds, 'tuzex.responder.response_factory');
+    }
+
+    private static function create(array $serviceIds, string $tag): ContainerBuilder
     {
         $containerBuilder = new ContainerBuilder();
-
         foreach ($serviceIds as $serviceId) {
             $serviceDefinition = new Definition($serviceId);
-            $serviceDefinition->addTag('tuzex.responder.result_transformer');
+            $serviceDefinition->addTag($tag);
 
             $containerBuilder->setDefinition($serviceId, $serviceDefinition);
         }
-
-        return $containerBuilder;
-    }
-
-    public static function withMiddlewares(array $serviceIds): ContainerBuilder
-    {
-        $containerBuilder = new ContainerBuilder();
-        $containerBuilder->prependExtensionConfig('tuzex', [
-            'responder' => [
-                'middlewares' => $serviceIds,
-            ],
-        ]);
 
         return $containerBuilder;
     }
