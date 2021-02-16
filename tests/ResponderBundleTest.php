@@ -7,9 +7,9 @@ namespace Tuzex\Bundle\Responder\Test;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Tuzex\Bundle\Responder\DependencyInjection\Compilation\RegisterMiddlewaresCompilerPass;
-use Tuzex\Bundle\Responder\DependencyInjection\Compilation\RegisterTransformResultMiddlewareCompilerPass;
-use Tuzex\Bundle\Responder\DependencyInjection\ResponderExtension;
+use Tuzex\Bundle\Responder\DependencyInjection\Compiler\ReconfigureFlashMessagePublisherPass;
+use Tuzex\Bundle\Responder\DependencyInjection\Compiler\RegisterFlexResponderPass;
+use Tuzex\Bundle\Responder\DependencyInjection\Compiler\RegisterResponseMiddlewarePass;
 use Tuzex\Bundle\Responder\ResponderBundle;
 
 final class ResponderBundleTest extends TestCase
@@ -26,30 +26,26 @@ final class ResponderBundleTest extends TestCase
     /**
      * @dataProvider provideCompilerPasses
      */
-    public function testItRegistersCompilerPasses(string $classOfCompilerPass): void
+    public function testItRegistersCompilerPasses(string $compilerPassId): void
     {
         $this->responderBundle->build($containerBuilder = new ContainerBuilder());
 
         $this->assertCount(1, array_filter(
             $containerBuilder->getCompilerPassConfig()->getPasses(),
-            fn (CompilerPassInterface $compilerPass): bool => $compilerPass instanceof $classOfCompilerPass
+            fn (CompilerPassInterface $compilerPass): bool => $compilerPass instanceof $compilerPassId
         ));
     }
 
     public function provideCompilerPasses(): array
     {
         $compilerPasses = [
-            RegisterMiddlewaresCompilerPass::class,
-            RegisterTransformResultMiddlewareCompilerPass::class,
+            ReconfigureFlashMessagePublisherPass::class,
+            RegisterFlexResponderPass::class,
+            RegisterResponseMiddlewarePass::class,
         ];
 
         return array_map(fn (string $compilerPass): array => [
-            'classOfCompilerPass' => $compilerPass,
+            'compilerPassId' => $compilerPass,
         ], $compilerPasses);
-    }
-
-    public function testItReturnsResponderExtension(): void
-    {
-        $this->assertInstanceOf(ResponderExtension::class, $this->responderBundle->getContainerExtension());
     }
 }

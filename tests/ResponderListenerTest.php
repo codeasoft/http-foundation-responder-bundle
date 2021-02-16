@@ -10,12 +10,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Tuzex\Bundle\Responder\ResponderListener;
-use Tuzex\Responder\Bridge\HttpFoundation\Response\ResponseFactory;
-use Tuzex\Responder\Middleware\TransformResultMiddleware;
-use Tuzex\Responder\Middlewares;
+use Tuzex\Responder\FlexResponder;
+use Tuzex\Responder\Middleware\CreateResponseMiddleware;
+use Tuzex\Responder\MiddlewarePipe;
 use Tuzex\Responder\Responder;
+use Tuzex\Responder\Response\ContentResponseFactory;
 use Tuzex\Responder\Result\Payload\PlainText;
-use Tuzex\Responder\Result\Payload\TextTransformer;
 
 final class ResponderListenerTest extends TestCase
 {
@@ -37,7 +37,7 @@ final class ResponderListenerTest extends TestCase
 
         $controllerResults = [
             'result' => [
-                'controllerResult' => PlainText::send('Hello World!'),
+                'controllerResult' => PlainText::define('Hello World!'),
                 'expectResponse' => true,
             ],
             'response' => [
@@ -60,10 +60,9 @@ final class ResponderListenerTest extends TestCase
 
     private function initResponder(): Responder
     {
-        $transformer = new TextTransformer(new ResponseFactory());
+        $responseFactory = new ContentResponseFactory();
+        $responseMiddleware = new CreateResponseMiddleware($responseFactory);
 
-        return new Responder(
-            new Middlewares(new TransformResultMiddleware($transformer))
-        );
+        return new FlexResponder($responseMiddleware);
     }
 }
