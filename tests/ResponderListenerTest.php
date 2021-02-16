@@ -12,7 +12,6 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Tuzex\Bundle\Responder\ResponderListener;
 use Tuzex\Responder\FlexResponder;
 use Tuzex\Responder\Middleware\CreateResponseMiddleware;
-use Tuzex\Responder\MiddlewarePipe;
 use Tuzex\Responder\Responder;
 use Tuzex\Responder\Response\ContentResponseFactory;
 use Tuzex\Responder\Result\Payload\PlainText;
