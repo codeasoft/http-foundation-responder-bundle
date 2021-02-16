@@ -21,6 +21,6 @@ final class ResponderListener
             return;
         }
 
-        $event->setResponse($this->responder->reply($result));
+        $event->setResponse($this->responder->process($result));
     }
 }
