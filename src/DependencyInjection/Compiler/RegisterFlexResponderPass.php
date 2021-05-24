@@ -15,8 +15,12 @@ final class RegisterFlexResponderPass implements CompilerPassInterface
 {
     private function setup(Definition $responder, array $middlewareIds): Definition
     {
-        return $responder->addMethodCall('extend', array_map(
-            fn (string $middlewareId): Reference => new Reference($middlewareId), $middlewareIds)
+        return $responder->addMethodCall(
+            'extend',
+            array_map(
+                fn (string $middlewareId): Reference => new Reference($middlewareId),
+                $middlewareIds
+            )
         );
     }
 

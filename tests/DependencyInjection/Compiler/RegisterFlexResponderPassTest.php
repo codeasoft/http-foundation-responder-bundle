@@ -28,8 +28,12 @@ final class RegisterFlexResponderPassTest extends TestCase
         $responderAddMethodCalls = $responderDefinition->getMethodCalls()[0];
 
         $this->assertSame('extend', $responderAddMethodCalls[0]);
-        $this->assertSame($middlewareIds, array_map(
-            fn (Reference $reference): string => $reference->__toString(), $responderAddMethodCalls[1])
+        $this->assertSame(
+            $middlewareIds,
+            array_map(
+                fn (Reference $reference): string => $reference->__toString(),
+                $responderAddMethodCalls[1]
+            )
         );
     }
 

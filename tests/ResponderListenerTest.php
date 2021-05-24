@@ -53,7 +53,8 @@ final class ResponderListenerTest extends TestCase
             fn (array $definition) => [
                 'viewEvent' => new ViewEvent($httpKernel, $request, 1, $definition['controllerResult']),
                 'expectResponse' => $definition['expectResponse'],
-            ], $controllerResults
+            ],
+            $controllerResults
         );
     }
 

@@ -24,8 +24,12 @@ final class RegisterResponseMiddlewarePass implements CompilerPassInterface
 
     private function define(string $middlewareId, array $factoryIds): Definition
     {
-        return new Definition($middlewareId, array_map(
-            fn (string $factoryId): Reference => new Reference($factoryId), $factoryIds)
+        return new Definition(
+            $middlewareId,
+            array_map(
+                fn (string $factoryId): Reference => new Reference($factoryId),
+                $factoryIds
+            )
         );
     }
 }

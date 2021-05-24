@@ -18,7 +18,7 @@ final class ReconfigureFlashMessagePublisherPass implements CompilerPassInterfac
     public function process(ContainerBuilder $containerBuilder): void
     {
         $translatorId = TranslatorInterface::class;
-        if (!$containerBuilder->has($translatorId)) {
+        if (! $containerBuilder->has($translatorId)) {
             return;
         }
 
@@ -33,8 +33,12 @@ final class ReconfigureFlashMessagePublisherPass implements CompilerPassInterfac
     {
         $referenceIds = [FlashBagInterface::class, $translatorId];
 
-        return new Definition($publisherId, array_map(
-            fn (string $referenceId): Reference => new Reference($referenceId), $referenceIds)
+        return new Definition(
+            $publisherId,
+            array_map(
+                fn (string $referenceId): Reference => new Reference($referenceId),
+                $referenceIds
+            )
         );
     }
 }

@@ -17,7 +17,7 @@ final class ResponderListener
     public function __invoke(ViewEvent $event): void
     {
         $result = $event->getControllerResult();
-        if (!$result instanceof Result) {
+        if (! $result instanceof Result) {
             return;
         }
 

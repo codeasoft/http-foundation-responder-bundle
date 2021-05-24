@@ -27,8 +27,12 @@ final class RegisterResponseMiddlewarePassTest extends TestCase
         $middlewareDefinition = $containerBuilder->getDefinition(CreateResponseMiddleware::class);
         $middlewareTransformers = $middlewareDefinition->getArguments();
 
-        $this->assertSame($responseFactoryIds, array_map(
-            fn (Reference $reference): string => $reference->__toString(), $middlewareTransformers)
+        $this->assertSame(
+            $responseFactoryIds,
+            array_map(
+                fn (Reference $reference): string => $reference->__toString(),
+                $middlewareTransformers
+            )
         );
     }
 
