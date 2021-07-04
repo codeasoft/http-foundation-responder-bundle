@@ -8,10 +8,10 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
-use Tuzex\Responder\FlexResponder;
 use Tuzex\Responder\Middleware\CreateResponseMiddleware;
+use Tuzex\Responder\PipeResponder;
 
-final class RegisterFlexResponderPass implements CompilerPassInterface
+final class RegisterPipeResponderPass implements CompilerPassInterface
 {
     private function setup(Definition $responder, array $middlewareIds): Definition
     {
@@ -26,7 +26,7 @@ final class RegisterFlexResponderPass implements CompilerPassInterface
 
     public function process(ContainerBuilder $container): void
     {
-        $responderId = FlexResponder::class;
+        $responderId = PipeResponder::class;
         $middlewareIds = array_keys(
             $container->findTaggedServiceIds('tuzex.responder.middleware')
         );

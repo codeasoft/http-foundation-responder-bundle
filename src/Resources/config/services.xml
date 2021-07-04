@@ -22,7 +22,7 @@
 
         <service id="Tuzex\Responder\Middleware\PublishFlashMessagesMiddleware"/>
 
-        <service id="Tuzex\Responder\Responder" alias="Tuzex\Responder\FlexResponder"/>
+        <service id="Tuzex\Responder\Responder" alias="Tuzex\Responder\PipeResponder"/>
 
         <service id="Tuzex\Responder\Response\ContentResponseFactory"/>
         <service id="Tuzex\Responder\Response\FileResponseFactory"/>

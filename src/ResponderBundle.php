@@ -8,7 +8,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 use Tuzex\Bundle\Responder\DependencyInjection\Compiler\ReconfigureFlashMessagePublisherPass;
-use Tuzex\Bundle\Responder\DependencyInjection\Compiler\RegisterFlexResponderPass;
+use Tuzex\Bundle\Responder\DependencyInjection\Compiler\RegisterPipeResponderPass;
 use Tuzex\Bundle\Responder\DependencyInjection\Compiler\RegisterResponseMiddlewarePass;
 
 final class ResponderBundle extends Bundle implements BundleInterface
@@ -19,6 +19,6 @@ final class ResponderBundle extends Bundle implements BundleInterface
 
         $container->addCompilerPass(new ReconfigureFlashMessagePublisherPass());
         $container->addCompilerPass(new RegisterResponseMiddlewarePass());
-        $container->addCompilerPass(new RegisterFlexResponderPass());
+        $container->addCompilerPass(new RegisterPipeResponderPass());
     }
 }
