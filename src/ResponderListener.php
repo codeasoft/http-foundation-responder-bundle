@@ -6,7 +6,7 @@ namespace Tuzex\Bundle\Responder;
 
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Tuzex\Responder\Responder;
-use Tuzex\Responder\Result;
+use Tuzex\Responder\Response\ResponseDefinition;
 
 final class ResponderListener
 {
@@ -16,11 +16,13 @@ final class ResponderListener
 
     public function __invoke(ViewEvent $event): void
     {
-        $result = $event->getControllerResult();
-        if (! $result instanceof Result) {
+        $responseDefinition = $event->getControllerResult();
+        if (! $responseDefinition instanceof ResponseDefinition) {
             return;
         }
 
-        $event->setResponse($this->responder->process($result));
+        $event->setResponse(
+            $this->responder->process($responseDefinition)
+        );
     }
 }

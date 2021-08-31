@@ -10,28 +10,33 @@ use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Tuzex\Responder\Bridge\HttpFoundation\SessionFlashMessagePublisher;
 use Tuzex\Responder\Bridge\HttpFoundation\TranslatableSessionFlashMessagePublisher;
 use Tuzex\Responder\Service\FlashMessagePublisher;
 
-final class ReconfigureFlashMessagePublisherPass implements CompilerPassInterface
+final class RegisterFlashMessagePublisherPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $containerBuilder): void
     {
-        $translatorId = TranslatorInterface::class;
-        if (! $containerBuilder->has($translatorId)) {
-            return;
-        }
-
         $publisherAlias = FlashMessagePublisher::class;
         $publisherId = TranslatableSessionFlashMessagePublisher::class;
+
+        $translatorId = TranslatorInterface::class;
+        if (! $containerBuilder->has($translatorId)) {
+            $publisherId = SessionFlashMessagePublisher::class;
+            $translatorId = null;
+        }
 
         $containerBuilder->setDefinition($publisherId, $this->define($publisherId, $translatorId));
         $containerBuilder->setAlias($publisherAlias, $publisherId);
     }
 
-    private function define(string $publisherId, string $translatorId): Definition
+    private function define(string $publisherId, ?string $translatorId = null): Definition
     {
-        $referenceIds = [FlashBagInterface::class, $translatorId];
+        $referenceIds = [FlashBagInterface::class];
+        if ($translatorId) {
+            array_push($referenceIds, $translatorId);
+        }
 
         return new Definition(
             $publisherId,

@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 use Tuzex\Responder\Middleware\CreateResponseMiddleware;
 
-final class RegisterResponseMiddlewarePass implements CompilerPassInterface
+final class RegisterCreateResponseMiddlewarePass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container): void
     {

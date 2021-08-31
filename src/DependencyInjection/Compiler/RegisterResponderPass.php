@@ -9,24 +9,13 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 use Tuzex\Responder\Middleware\CreateResponseMiddleware;
-use Tuzex\Responder\PipeResponder;
+use Tuzex\Responder\Responder;
 
-final class RegisterPipeResponderPass implements CompilerPassInterface
+final class RegisterResponderPass implements CompilerPassInterface
 {
-    private function setup(Definition $responder, array $middlewareIds): Definition
-    {
-        return $responder->addMethodCall(
-            'extend',
-            array_map(
-                fn (string $middlewareId): Reference => new Reference($middlewareId),
-                $middlewareIds
-            )
-        );
-    }
-
     public function process(ContainerBuilder $container): void
     {
-        $responderId = PipeResponder::class;
+        $responderId = Responder::class;
         $middlewareIds = array_keys(
             $container->findTaggedServiceIds('tuzex.responder.middleware')
         );
@@ -36,10 +25,15 @@ final class RegisterPipeResponderPass implements CompilerPassInterface
 
     private function define(string $responderId, array $middlewareIds): Definition
     {
-        $responder = new Definition($responderId, [
+        $responderDefinition = new Definition($responderId, [
             new Reference(CreateResponseMiddleware::class),
         ]);
 
-        return $this->setup($responder, $middlewareIds);
+        $responderMiddlewareReferences = array_map(
+            fn (string $middlewareId): Reference => new Reference($middlewareId),
+            $middlewareIds
+        );
+
+        return $responderDefinition->addMethodCall('extend', $responderMiddlewareReferences);
     }
 }

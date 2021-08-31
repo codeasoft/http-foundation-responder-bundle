@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Tuzex\Responder\Middleware;
-use Tuzex\Responder\ResponseFactory;
+use Tuzex\Responder\Response\ResponseFactory;
 
 final class ResponderExtension extends Extension implements ExtensionInterface, PrependExtensionInterface
 {

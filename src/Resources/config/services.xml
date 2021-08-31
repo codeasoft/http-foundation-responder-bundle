@@ -7,10 +7,6 @@
     <services>
         <defaults autowire="true" autoconfigure="true" public="false"/>
 
-        <service id="Tuzex\Bundle\Responder\ResponderListener">
-            <tag name="kernel.event_listener" event="kernel.view" priority="-256"/>
-        </service>
-
         <service id="Tuzex\Responder\Bridge\HttpFoundation\RequestAccessor"/>
         <service id="Tuzex\Responder\Bridge\HttpFoundation\RequestReferrerProvider"/>
         <service id="Tuzex\Responder\Bridge\HttpFoundation\RequestUriProvider"/>
@@ -22,18 +18,20 @@
 
         <service id="Tuzex\Responder\Middleware\PublishFlashMessagesMiddleware"/>
 
-        <service id="Tuzex\Responder\Responder" alias="Tuzex\Responder\PipeResponder"/>
-
-        <service id="Tuzex\Responder\Response\ContentResponseFactory"/>
-        <service id="Tuzex\Responder\Response\FileResponseFactory"/>
-        <service id="Tuzex\Responder\Response\JsonResponseFactory"/>
-        <service id="Tuzex\Responder\Response\ReferrerRedirectResponseFactory"/>
-        <service id="Tuzex\Responder\Response\RouteRedirectResponseFactory"/>
-        <service id="Tuzex\Responder\Response\TwigResponseFactory"/>
-        <service id="Tuzex\Responder\Response\UriRedirectResponseFactory"/>
-        <service id="Tuzex\Responder\Response\UrlRedirectResponseFactory"/>
+        <service id="Tuzex\Responder\Response\Factory\FileResponseFactory"/>
+        <service id="Tuzex\Responder\Response\Factory\JsonResponseFactory"/>
+        <service id="Tuzex\Responder\Response\Factory\ReferrerRedirectResponseFactory"/>
+        <service id="Tuzex\Responder\Response\Factory\RouteRedirectResponseFactory"/>
+        <service id="Tuzex\Responder\Response\Factory\TextResponseFactory"/>
+        <service id="Tuzex\Responder\Response\Factory\TwigResponseFactory"/>
+        <service id="Tuzex\Responder\Response\Factory\UriRedirectResponseFactory"/>
+        <service id="Tuzex\Responder\Response\Factory\UrlRedirectResponseFactory"/>
 
         <service id="Tuzex\Responder\Service\FlashMessagePublisher" alias="Tuzex\Responder\Bridge\HttpFoundation\SessionFlashMessagePublisher"/>
         <service id="Tuzex\Responder\Service\TemplateRenderer" alias="Tuzex\Responder\Bridge\Twig\TwigTemplateRenderer"/>
+
+        <service id="Tuzex\Bundle\Responder\ResponderListener">
+            <tag name="kernel.event_listener" event="kernel.view" priority="-256"/>
+        </service>
     </services>
 </container>
