@@ -11,19 +11,30 @@ use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Tuzex\Bundle\Responder\ResponderListener;
 use Tuzex\Responder\Middleware\CreateResponseMiddleware;
-use Tuzex\Responder\PipeResponder;
 use Tuzex\Responder\Responder;
-use Tuzex\Responder\Response\ContentResponseFactory;
-use Tuzex\Responder\Result\Payload\PlainText;
+use Tuzex\Responder\Response\Definition\PlainText;
+use Tuzex\Responder\Response\Factory\TextResponseFactory;
 
 final class ResponderListenerTest extends TestCase
 {
+    private Responder $responder;
+
+    protected function setUp(): void
+    {
+        $responseFactory = new TextResponseFactory();
+        $responseMiddleware = new CreateResponseMiddleware($responseFactory);
+
+        $this->responder = new Responder($responseMiddleware);
+
+        parent::setUp();
+    }
+
     /**
      * @dataProvider provideEvents
      */
     public function testItCreatesResponseFromControllerResult(ViewEvent $viewEvent, bool $expectResponse): void
     {
-        $responderListener = new ResponderListener($this->initResponder());
+        $responderListener = new ResponderListener($this->responder);
         $responderListener($viewEvent);
 
         $this->assertSame($expectResponse, $viewEvent->hasResponse());
@@ -36,7 +47,7 @@ final class ResponderListenerTest extends TestCase
 
         $controllerResults = [
             'result' => [
-                'controllerResult' => PlainText::send('Hello World!'),
+                'controllerResult' => PlainText::define('Hello World!'),
                 'expectResponse' => true,
             ],
             'response' => [
@@ -56,13 +67,5 @@ final class ResponderListenerTest extends TestCase
             ],
             $controllerResults
         );
-    }
-
-    private function initResponder(): Responder
-    {
-        $responseFactory = new ContentResponseFactory();
-        $responseMiddleware = new CreateResponseMiddleware($responseFactory);
-
-        return new PipeResponder($responseMiddleware);
     }
 }

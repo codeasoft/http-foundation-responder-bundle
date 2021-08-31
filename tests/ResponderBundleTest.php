@@ -7,9 +7,9 @@ namespace Tuzex\Bundle\Responder\Test;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Tuzex\Bundle\Responder\DependencyInjection\Compiler\ReconfigureFlashMessagePublisherPass;
-use Tuzex\Bundle\Responder\DependencyInjection\Compiler\RegisterPipeResponderPass;
-use Tuzex\Bundle\Responder\DependencyInjection\Compiler\RegisterResponseMiddlewarePass;
+use Tuzex\Bundle\Responder\DependencyInjection\Compiler\RegisterFlashMessagePublisherPass;
+use Tuzex\Bundle\Responder\DependencyInjection\Compiler\RegisterCreateResponseMiddlewarePass;
+use Tuzex\Bundle\Responder\DependencyInjection\Compiler\RegisterResponderPass;
 use Tuzex\Bundle\Responder\ResponderBundle;
 
 final class ResponderBundleTest extends TestCase
@@ -39,9 +39,9 @@ final class ResponderBundleTest extends TestCase
     public function provideCompilerPasses(): array
     {
         $compilerPasses = [
-            ReconfigureFlashMessagePublisherPass::class,
-            RegisterPipeResponderPass::class,
-            RegisterResponseMiddlewarePass::class,
+            RegisterFlashMessagePublisherPass::class,
+            RegisterResponderPass::class,
+            RegisterCreateResponseMiddlewarePass::class,
         ];
 
         return array_map(fn (string $compilerPass): array => [

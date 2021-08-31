@@ -17,17 +17,15 @@ use Tuzex\Responder\Http\ReferrerProvider;
 use Tuzex\Responder\Http\UriProvider;
 use Tuzex\Responder\Middleware;
 use Tuzex\Responder\Middleware\PublishFlashMessagesMiddleware;
-use Tuzex\Responder\PipeResponder;
-use Tuzex\Responder\Responder;
-use Tuzex\Responder\Response\ContentResponseFactory;
-use Tuzex\Responder\Response\FileResponseFactory;
-use Tuzex\Responder\Response\JsonResponseFactory;
-use Tuzex\Responder\Response\ReferrerRedirectResponseFactory;
-use Tuzex\Responder\Response\RouteRedirectResponseFactory;
-use Tuzex\Responder\Response\TwigResponseFactory;
-use Tuzex\Responder\Response\UriRedirectResponseFactory;
-use Tuzex\Responder\Response\UrlRedirectResponseFactory;
-use Tuzex\Responder\ResponseFactory;
+use Tuzex\Responder\Response\Factory\FileResponseFactory;
+use Tuzex\Responder\Response\Factory\JsonResponseFactory;
+use Tuzex\Responder\Response\Factory\ReferrerRedirectResponseFactory;
+use Tuzex\Responder\Response\Factory\RouteRedirectResponseFactory;
+use Tuzex\Responder\Response\Factory\TextResponseFactory;
+use Tuzex\Responder\Response\Factory\TwigResponseFactory;
+use Tuzex\Responder\Response\Factory\UriRedirectResponseFactory;
+use Tuzex\Responder\Response\Factory\UrlRedirectResponseFactory;
+use Tuzex\Responder\Response\ResponseFactory;
 use Tuzex\Responder\Service\FlashMessagePublisher;
 use Tuzex\Responder\Service\TemplateRenderer;
 
@@ -63,12 +61,12 @@ final class ResponderExtensionTest extends TestCase
             SessionFlashMessagePublisher::class,
             TwigTemplateRenderer::class,
             PublishFlashMessagesMiddleware::class,
-            ContentResponseFactory::class,
             FileResponseFactory::class,
             JsonResponseFactory::class,
             ReferrerRedirectResponseFactory::class,
             ResponderListener::class,
             RouteRedirectResponseFactory::class,
+            TextResponseFactory::class,
             TwigResponseFactory::class,
             UrlRedirectResponseFactory::class,
             UriRedirectResponseFactory::class,
@@ -94,7 +92,6 @@ final class ResponderExtensionTest extends TestCase
     public function provideServiceAliases(): iterable
     {
         $serviceAliases = [
-            Responder::class => PipeResponder::class,
             FlashMessagePublisher::class => SessionFlashMessagePublisher::class,
             ReferrerProvider::class => RequestReferrerProvider::class,
             TemplateRenderer::class => TwigTemplateRenderer::class,

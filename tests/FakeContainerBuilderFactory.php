@@ -9,12 +9,12 @@ use Symfony\Component\DependencyInjection\Definition;
 
 final class FakeContainerBuilderFactory
 {
-    public static function withMiddlewares(array $serviceIds): ContainerBuilder
+    public static function withMiddlewares(string ...$serviceIds): ContainerBuilder
     {
         return self::create($serviceIds, 'tuzex.responder.middleware');
     }
 
-    public static function withResponseFactory(array $serviceIds): ContainerBuilder
+    public static function withResponseFactories(string ...$serviceIds): ContainerBuilder
     {
         return self::create($serviceIds, 'tuzex.responder.response_factory');
     }
