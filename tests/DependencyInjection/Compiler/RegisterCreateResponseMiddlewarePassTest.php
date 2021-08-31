@@ -25,7 +25,7 @@ final class RegisterCreateResponseMiddlewarePassTest extends TestCase
 
         $middlewareDefinition = $containerBuilder->getDefinition(CreateResponseMiddleware::class);
         $middlewareArgumentIds = array_map(
-            fn(Reference $reference): string => $reference->__toString(),
+            fn (Reference $reference): string => $reference->__toString(),
             $middlewareDefinition->getArguments()
         );
 

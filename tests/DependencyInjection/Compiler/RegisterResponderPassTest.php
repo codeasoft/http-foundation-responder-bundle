@@ -28,7 +28,7 @@ final class RegisterResponderPassTest extends TestCase
 
         $responderMethodName = $responderMethodCalls[0];
         $responderMethodArguments = array_map(
-            fn(Reference $reference): string => $reference->__toString(),
+            fn (Reference $reference): string => $reference->__toString(),
             $responderMethodCalls[1]
         );
 
