@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Tuzex\Bundle\Responder\ResponderListener;
 use Tuzex\Responder\Middleware\CreateResponseMiddleware;
 use Tuzex\Responder\Responder;
-use Tuzex\Responder\Response\Definition\PlainText;
+use Tuzex\Responder\Response\Resource\PlainText;
 use Tuzex\Responder\Response\Factory\TextResponseFactory;
 
 final class ResponderListenerTest extends TestCase
