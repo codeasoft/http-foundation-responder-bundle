@@ -8,14 +8,14 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
+use Tuzex\Responder\ContextResponder;
 use Tuzex\Responder\Middleware\CreateResponseMiddleware;
-use Tuzex\Responder\Responder;
 
-final class RegisterResponderPass implements CompilerPassInterface
+final class RegisterContextResponder implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container): void
     {
-        $responderId = Responder::class;
+        $responderId = ContextResponder::class;
         $middlewareIds = array_keys(
             $container->findTaggedServiceIds('tuzex.responder.middleware')
         );

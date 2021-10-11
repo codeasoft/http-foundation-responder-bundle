@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Tuzex\Bundle\Responder\ResponderListener;
+use Tuzex\Responder\ContextResponder;
 use Tuzex\Responder\Middleware\CreateResponseMiddleware;
 use Tuzex\Responder\Responder;
 use Tuzex\Responder\Response\Factory\TextResponseFactory;
@@ -24,7 +25,7 @@ final class ResponderListenerTest extends TestCase
         $responseFactory = new TextResponseFactory();
         $responseMiddleware = new CreateResponseMiddleware($responseFactory);
 
-        $this->responder = new Responder($responseMiddleware);
+        $this->responder = new ContextResponder($responseMiddleware);
 
         parent::setUp();
     }
@@ -47,7 +48,7 @@ final class ResponderListenerTest extends TestCase
 
         $controllerResults = [
             'result' => [
-                'controllerResult' => PlainText::define('Hello World!'),
+                'controllerResult' => PlainText::set('Hello World!'),
                 'expectResponse' => true,
             ],
             'response' => [

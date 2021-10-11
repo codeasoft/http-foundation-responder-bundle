@@ -7,11 +7,11 @@ namespace Tuzex\Bundle\Responder\Test\DependencyInjection\Compiler;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
-use Tuzex\Bundle\Responder\DependencyInjection\Compiler\RegisterResponderPass;
+use Tuzex\Bundle\Responder\DependencyInjection\Compiler\RegisterContextResponder;
 use Tuzex\Bundle\Responder\Test\FakeContainerBuilderFactory;
+use Tuzex\Responder\ContextResponder;
 use Tuzex\Responder\Middleware\CreateResponseMiddleware;
 use Tuzex\Responder\Middleware\PublishFlashMessagesMiddleware;
-use Tuzex\Responder\Responder;
 
 final class RegisterResponderPassTest extends TestCase
 {
@@ -20,10 +20,10 @@ final class RegisterResponderPassTest extends TestCase
      */
     public function testItRegistersMiddlewareWithResponseFactories(ContainerBuilder $containerBuilder, array $middlewareIds): void
     {
-        $compilerPass = new RegisterResponderPass();
+        $compilerPass = new RegisterContextResponder();
         $compilerPass->process($containerBuilder);
 
-        $responderDefinition = $containerBuilder->getDefinition(Responder::class);
+        $responderDefinition = $containerBuilder->getDefinition(ContextResponder::class);
         $responderMethodCalls = $responderDefinition->getMethodCalls()[0];
 
         $responderMethodName = $responderMethodCalls[0];
