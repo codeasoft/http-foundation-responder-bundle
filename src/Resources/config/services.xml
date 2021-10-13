@@ -16,7 +16,7 @@
         <service id="Tuzex\Responder\Http\ReferrerProvider" alias="Tuzex\Responder\Bridge\HttpFoundation\RequestReferrerProvider"/>
         <service id="Tuzex\Responder\Http\UriProvider" alias="Tuzex\Responder\Bridge\HttpFoundation\RequestUriProvider"/>
 
-        <service id="Tuzex\Responder\Middleware\PublishFlashMessagesMiddleware"/>
+        <service id="Tuzex\Responder\Middleware\FlashMessageEmitter"/>
 
         <service id="Tuzex\Responder\Response\Factory\FileResponseFactory"/>
         <service id="Tuzex\Responder\Response\Factory\JsonResponseFactory"/>
