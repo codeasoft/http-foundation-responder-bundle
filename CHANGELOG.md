@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.0] - 2021-10-11
+
+### Changed
+- **[BC BREAK]** Bump `Tuzex/responder` to version 0.8.0
+
 ## [0.6.0] - 2021-09-28
 
 ### Changed
@@ -42,7 +47,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Use ```TransformResultMiddleware``` instead of ```ProcessResultMiddleware```
 
-[Unreleased]: https://github.com/Tuzex/responder-bundle/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/Tuzex/responder-bundle/compare/v0.7.0...HEAD
+[0.7.0]: https://github.com/Tuzex/responder-bundle/compare/v0.7.0...HEAD
 [0.6.0]: https://github.com/Tuzex/responder-bundle/releases/tag/v0.6.0
 [0.5.0]: https://github.com/Tuzex/responder-bundle/releases/tag/v0.5.0
 [0.4.0]: https://github.com/Tuzex/responder-bundle/releases/tag/v0.4.0
