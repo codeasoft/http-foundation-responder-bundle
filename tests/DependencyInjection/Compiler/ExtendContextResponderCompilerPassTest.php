@@ -6,21 +6,21 @@ namespace Tuzex\Bundle\Responder\Test\DependencyInjection\Compiler;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 use Symfony\Component\DependencyInjection\Reference;
-use Tuzex\Bundle\Responder\DependencyInjection\Compiler\RegisterContextResponder;
+use Tuzex\Bundle\Responder\DependencyInjection\Compiler\ExtendContextResponderCompilerPass;
 use Tuzex\Bundle\Responder\Test\FakeContainerBuilderFactory;
 use Tuzex\Responder\ContextResponder;
-use Tuzex\Responder\Middleware\CreateResponseMiddleware;
-use Tuzex\Responder\Middleware\PublishFlashMessagesMiddleware;
+use Tuzex\Responder\Middleware\FlashMessageEmitter;
 
-final class RegisterResponderPassTest extends TestCase
+final class ExtendContextResponderCompilerPassTest extends TestCase
 {
     /**
      * @dataProvider provideData
      */
-    public function testItRegistersMiddlewareWithResponseFactories(ContainerBuilder $containerBuilder, array $middlewareIds): void
+    public function testItRegistersMiddlewaresToResponder(ContainerBuilder $containerBuilder, array $middlewareIds): void
     {
-        $compilerPass = new RegisterContextResponder();
+        $compilerPass = new ExtendContextResponderCompilerPass();
         $compilerPass->process($containerBuilder);
 
         $responderDefinition = $containerBuilder->getDefinition(ContextResponder::class);
@@ -36,22 +36,29 @@ final class RegisterResponderPassTest extends TestCase
         $this->assertSame($middlewareIds, $responderMethodArguments);
     }
 
+    public function testItThrowsExceptionIfResponderIsNotRegistered(): void
+    {
+        $containerBuilder = new ContainerBuilder();
+        $compilerPass = new ExtendContextResponderCompilerPass();
+
+        $this->expectException(ServiceNotFoundException::class);
+        $compilerPass->process($containerBuilder);
+    }
+
     public function provideData(): iterable
     {
         $data = [
             'anyone' => [],
             'one' => [
-                PublishFlashMessagesMiddleware::class,
-            ],
-            'several' => [
-                CreateResponseMiddleware::class,
-                PublishFlashMessagesMiddleware::class,
+                FlashMessageEmitter::class,
             ],
         ];
 
         foreach ($data as $count => $middlewareIds) {
+            $containerBuilder = FakeContainerBuilderFactory::withResponderAndMiddlewares(...$middlewareIds);
+
             yield $count => [
-                'containerBuilder' => FakeContainerBuilderFactory::withMiddlewares(...$middlewareIds),
+                'containerBuilder' => $containerBuilder,
                 'middlewareIds' => $middlewareIds,
             ];
         }

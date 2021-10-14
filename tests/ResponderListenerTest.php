@@ -11,31 +11,24 @@ use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Tuzex\Bundle\Responder\ResponderListener;
 use Tuzex\Responder\ContextResponder;
-use Tuzex\Responder\Middleware\CreateResponseMiddleware;
-use Tuzex\Responder\Responder;
+use Tuzex\Responder\Middleware\ResponseProducer;
 use Tuzex\Responder\Response\Factory\TextResponseFactory;
 use Tuzex\Responder\Response\Resource\PlainText;
 
 final class ResponderListenerTest extends TestCase
 {
-    private Responder $responder;
-
-    protected function setUp(): void
-    {
-        $responseFactory = new TextResponseFactory();
-        $responseMiddleware = new CreateResponseMiddleware($responseFactory);
-
-        $this->responder = new ContextResponder($responseMiddleware);
-
-        parent::setUp();
-    }
-
     /**
      * @dataProvider provideEvents
      */
     public function testItCreatesResponseFromControllerResult(ViewEvent $viewEvent, bool $expectResponse): void
     {
-        $responderListener = new ResponderListener($this->responder);
+        $responder = new ContextResponder(
+            new ResponseProducer(
+                new TextResponseFactory()
+            )
+        );
+
+        $responderListener = new ResponderListener($responder);
         $responderListener($viewEvent);
 
         $this->assertSame($expectResponse, $viewEvent->hasResponse());

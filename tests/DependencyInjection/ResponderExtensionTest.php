@@ -16,7 +16,7 @@ use Tuzex\Responder\Bridge\Twig\TwigTemplateRenderer;
 use Tuzex\Responder\Http\ReferrerProvider;
 use Tuzex\Responder\Http\UriProvider;
 use Tuzex\Responder\Middleware;
-use Tuzex\Responder\Middleware\PublishFlashMessagesMiddleware;
+use Tuzex\Responder\Middleware\FlashMessageEmitter;
 use Tuzex\Responder\Response\Factory\FileResponseFactory;
 use Tuzex\Responder\Response\Factory\JsonResponseFactory;
 use Tuzex\Responder\Response\Factory\ReferrerRedirectResponseFactory;
@@ -60,7 +60,7 @@ final class ResponderExtensionTest extends TestCase
             RequestUriProvider::class,
             SessionFlashMessagePublisher::class,
             TwigTemplateRenderer::class,
-            PublishFlashMessagesMiddleware::class,
+            FlashMessageEmitter::class,
             FileResponseFactory::class,
             JsonResponseFactory::class,
             ReferrerRedirectResponseFactory::class,
