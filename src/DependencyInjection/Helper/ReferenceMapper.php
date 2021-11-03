@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\Reference;
 final class ReferenceMapper
 {
     /**
-     * @return array<int, Reference>
+     * @return array<int|string, Reference>
      */
     public static function map(string ...$ids): array
     {
