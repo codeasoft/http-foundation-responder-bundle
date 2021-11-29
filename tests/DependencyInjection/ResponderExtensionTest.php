@@ -8,9 +8,10 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Tuzex\Bundle\Responder\DependencyInjection\ResponderExtension;
 use Tuzex\Bundle\Responder\ResponderListener;
-use Tuzex\Responder\Bridge\HttpFoundation\RequestAccessor;
-use Tuzex\Responder\Bridge\HttpFoundation\RequestReferrerProvider;
-use Tuzex\Responder\Bridge\HttpFoundation\RequestUriProvider;
+use Tuzex\Responder\Bridge\HttpFoundation\Request\RequestAccessor;
+use Tuzex\Responder\Bridge\HttpFoundation\Request\RequestFlashBagProvider;
+use Tuzex\Responder\Bridge\HttpFoundation\Request\RequestReferrerProvider;
+use Tuzex\Responder\Bridge\HttpFoundation\Request\RequestUriProvider;
 use Tuzex\Responder\Bridge\HttpFoundation\SessionFlashMessagePublisher;
 use Tuzex\Responder\Bridge\Twig\TwigTemplateRenderer;
 use Tuzex\Responder\Http\ReferrerProvider;
@@ -56,6 +57,7 @@ final class ResponderExtensionTest extends TestCase
     {
         $serviceIds = [
             RequestAccessor::class,
+            RequestFlashBagProvider::class,
             RequestReferrerProvider::class,
             RequestUriProvider::class,
             SessionFlashMessagePublisher::class,

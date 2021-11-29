@@ -1,6 +1,6 @@
 {
   "name": "tuzex/responder-bundle",
-  "description": "Intergation of smart responder based on the Symfony HTTP Foundation to Symfony 4.3 and higher",
+  "description": "Intergation of smart responder based on the Symfony HTTP Foundation to Symfony",
   "type": "symfony-bundle",
   "license": "MIT",
   "authors": [
@@ -23,10 +23,10 @@
     }
   },
   "require": {
-    "php": "8.*",
-    "symfony/framework-bundle": "4.3.*|4.4.*|5.*",
-    "symfony/twig-bundle": "4.3.*|4.4.*|5.*",
-    "tuzex/responder": "0.8.*"
+    "php": "^8.0.2|8.1.*",
+    "symfony/framework-bundle": "6.*",
+    "symfony/twig-bundle": "6.*",
+    "tuzex/responder": "0.9.*"
   },
   "require-dev": {
     "phpstan/phpstan": "1.2.*",

@@ -7,14 +7,15 @@
     <services>
         <defaults autowire="true" autoconfigure="true" public="false"/>
 
-        <service id="Tuzex\Responder\Bridge\HttpFoundation\RequestAccessor"/>
-        <service id="Tuzex\Responder\Bridge\HttpFoundation\RequestReferrerProvider"/>
-        <service id="Tuzex\Responder\Bridge\HttpFoundation\RequestUriProvider"/>
+        <service id="Tuzex\Responder\Bridge\HttpFoundation\Request\RequestAccessor"/>
+        <service id="Tuzex\Responder\Bridge\HttpFoundation\Request\RequestFlashBagProvider"/>
+        <service id="Tuzex\Responder\Bridge\HttpFoundation\Request\RequestReferrerProvider"/>
+        <service id="Tuzex\Responder\Bridge\HttpFoundation\Request\RequestUriProvider"/>
         <service id="Tuzex\Responder\Bridge\HttpFoundation\SessionFlashMessagePublisher"/>
         <service id="Tuzex\Responder\Bridge\Twig\TwigTemplateRenderer"/>
 
-        <service id="Tuzex\Responder\Http\ReferrerProvider" alias="Tuzex\Responder\Bridge\HttpFoundation\RequestReferrerProvider"/>
-        <service id="Tuzex\Responder\Http\UriProvider" alias="Tuzex\Responder\Bridge\HttpFoundation\RequestUriProvider"/>
+        <service id="Tuzex\Responder\Http\ReferrerProvider" alias="Tuzex\Responder\Bridge\HttpFoundation\Request\RequestReferrerProvider"/>
+        <service id="Tuzex\Responder\Http\UriProvider" alias="Tuzex\Responder\Bridge\HttpFoundation\Request\RequestUriProvider"/>
 
         <service id="Tuzex\Responder\Middleware\FlashMessageEmitter"/>
 
