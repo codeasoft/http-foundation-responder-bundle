@@ -7,7 +7,7 @@
 [![Code Quality](https://img.shields.io/scrutinizer/quality/g/tuzex/responder-bundle?style=flat-square)](https://scrutinizer-ci.com/g/Tuzex/responder-bundle/?branch=master)
 [![Coverage Status](https://img.shields.io/coveralls/github/Tuzex/responder-bundle?style=flat-square)](https://coveralls.io/github/Tuzex/responder-bundle?branch=master)
 
-Intergation of smart responder based on the Symfony HTTP Foundation to Symfony 4.3 and higher.
+Intergation of smart responder based on the Symfony HTTP Foundation to Symfony.
 
 Install
 -------
