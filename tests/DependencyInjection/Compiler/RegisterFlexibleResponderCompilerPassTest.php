@@ -47,7 +47,7 @@ final class RegisterFlexibleResponderCompilerPassTest extends TestCase
         $responderArguments = $containerBuilder->getDefinition($this->getResponderId())->getArguments();
 
         $this->assertCount($expectedCount, $responderArguments);
-        $this->assertEqualsFirstKey($this->getResponseProducerId(), $responderArguments);
+        $this->assertEqualsFirstValue($this->getResponseProducerId(), $responderArguments);
     }
 
     public function provideResponderArguments(): iterable
@@ -85,8 +85,8 @@ final class RegisterFlexibleResponderCompilerPassTest extends TestCase
         return ResponseProducer::class;
     }
 
-    private function assertEqualsFirstKey(string $expected, array $arguments): void
+    private function assertEqualsFirstValue(string $expected, array $arguments): void
     {
-        $this->assertSame($expected, array_key_first($arguments));
+        $this->assertSame($expected, (string) current($arguments));
     }
 }

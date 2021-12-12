@@ -13,10 +13,8 @@ final class MiddlewaresMapper
      */
     public static function map(ContainerBuilder $containerBuilder): array
     {
-        $middlewareIds = array_keys(
+        return array_keys(
             $containerBuilder->findTaggedServiceIds('tuzex.responder.middleware')
         );
-
-        return array_combine($middlewareIds, $middlewareIds);
     }
 }
