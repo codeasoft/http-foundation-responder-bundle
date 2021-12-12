@@ -30,6 +30,7 @@ final class RegisterResponseProducerCompilerPassTest extends TestCase
         );
 
         $this->assertSame($responseFactoryIds, $middlewareFactoryIds);
+        $this->assertTrue($middlewareDefinition->hasTag('tuzex.responder.middleware'));
     }
 
     public function provideData(): iterable

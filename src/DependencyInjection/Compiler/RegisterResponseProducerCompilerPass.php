@@ -17,6 +17,7 @@ final class RegisterResponseProducerCompilerPass implements CompilerPassInterfac
         $responseProducerId = ResponseProducer::class;
         $responseFactoryIds = ResponseFactoriesMapper::map($container);
 
-        $container->setDefinition($responseProducerId, DefinitionFactory::create($responseProducerId, $responseFactoryIds));
+        $container->setDefinition($responseProducerId, DefinitionFactory::create($responseProducerId, $responseFactoryIds))
+            ->addTag('tuzex.responder.middleware');
     }
 }
