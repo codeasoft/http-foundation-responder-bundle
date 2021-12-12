@@ -7,17 +7,16 @@ namespace Tuzex\Bundle\Responder\DependencyInjection\Compiler;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Tuzex\Bundle\Responder\DependencyInjection\Helper\DefinitionFactory;
+use Tuzex\Bundle\Responder\DependencyInjection\Mapper\ResponseFactoriesMapper;
 use Tuzex\Responder\Middleware\ResponseProducer;
 
 final class RegisterResponseProducerCompilerPass implements CompilerPassInterface
 {
-    public function process(ContainerBuilder $containerBuilder): void
+    public function process(ContainerBuilder $container): void
     {
-        $producerId = ResponseProducer::class;
-        $factoryIds = array_keys(
-            $containerBuilder->findTaggedServiceIds('tuzex.responder.response_factory')
-        );
+        $responseProducerId = ResponseProducer::class;
+        $responseFactoryIds = ResponseFactoriesMapper::map($container);
 
-        $containerBuilder->setDefinition($producerId, DefinitionFactory::create($producerId, $factoryIds));
+        $container->setDefinition($responseProducerId, DefinitionFactory::create($responseProducerId, $responseFactoryIds));
     }
 }
