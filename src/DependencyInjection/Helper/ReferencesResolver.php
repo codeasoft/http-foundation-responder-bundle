@@ -6,12 +6,12 @@ namespace Tuzex\Bundle\Responder\DependencyInjection\Helper;
 
 use Symfony\Component\DependencyInjection\Reference;
 
-final class ReferenceMapper
+final class ReferencesResolver
 {
     /**
      * @return array<int|string, Reference>
      */
-    public static function map(string ...$ids): array
+    public static function resolve(string ...$ids): array
     {
         return array_map(fn (string $id): Reference => new Reference($id), $ids);
     }

@@ -6,18 +6,18 @@ namespace Tuzex\Bundle\Responder\Test\DependencyInjection\Helper;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\Reference;
-use Tuzex\Bundle\Responder\DependencyInjection\Helper\ReferenceMapper;
+use Tuzex\Bundle\Responder\DependencyInjection\Helper\ReferencesResolver;
 use Tuzex\Bundle\Responder\ResponderBundle;
 use Tuzex\Bundle\Responder\ResponderListener;
 
-final class ReferenceMapperTest extends TestCase
+final class ReferencesResolverTest extends TestCase
 {
     /**
      * @dataProvider provideData
      */
     public function testItMapsIdToReference(int $count, array $ids): void
     {
-        $references = ReferenceMapper::map(...$ids);
+        $references = ReferencesResolver::resolve(...$ids);
 
         $this->assertCount($count, $references);
         $this->assertContainsOnlyInstancesOf(Reference::class, $references);

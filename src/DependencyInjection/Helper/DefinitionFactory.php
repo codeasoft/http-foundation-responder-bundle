@@ -10,6 +10,6 @@ final class DefinitionFactory
 {
     public static function create(string $class, array $arguments = []): Definition
     {
-        return new Definition($class, ReferenceMapper::map(...$arguments));
+        return new Definition($class, ReferencesResolver::resolve(...$arguments));
     }
 }
