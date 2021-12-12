@@ -8,8 +8,8 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\Reference;
 use Tuzex\Bundle\Responder\DependencyInjection\Helper\DefinitionFactory;
 use Tuzex\Responder\Middleware\ResponseProducer;
-use Tuzex\Responder\Response\Factory\JsonResponseFactory;
-use Tuzex\Responder\Response\Factory\TextResponseFactory;
+use Tuzex\Responder\Response\ResponseFactory\JsonResponseFactory;
+use Tuzex\Responder\Response\ResponseFactory\TextResponseFactory;
 
 final class DefinitionFactoryTest extends TestCase
 {

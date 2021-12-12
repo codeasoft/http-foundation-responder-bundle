@@ -19,14 +19,14 @@
 
         <service id="Tuzex\Responder\Middleware\FlashMessageEmitter"/>
 
-        <service id="Tuzex\Responder\Response\Factory\FileResponseFactory"/>
-        <service id="Tuzex\Responder\Response\Factory\JsonResponseFactory"/>
-        <service id="Tuzex\Responder\Response\Factory\ReferrerRedirectResponseFactory"/>
-        <service id="Tuzex\Responder\Response\Factory\RouteRedirectResponseFactory"/>
-        <service id="Tuzex\Responder\Response\Factory\TextResponseFactory"/>
-        <service id="Tuzex\Responder\Response\Factory\TwigResponseFactory"/>
-        <service id="Tuzex\Responder\Response\Factory\UriRedirectResponseFactory"/>
-        <service id="Tuzex\Responder\Response\Factory\UrlRedirectResponseFactory"/>
+        <service id="Tuzex\Responder\Response\ResponseFactory\FileResponseFactory"/>
+        <service id="Tuzex\Responder\Response\ResponseFactory\JsonResponseFactory"/>
+        <service id="Tuzex\Responder\Response\ResponseFactory\ReferrerRedirectResponseFactory"/>
+        <service id="Tuzex\Responder\Response\ResponseFactory\RouteRedirectResponseFactory"/>
+        <service id="Tuzex\Responder\Response\ResponseFactory\TextResponseFactory"/>
+        <service id="Tuzex\Responder\Response\ResponseFactory\TwigResponseFactory"/>
+        <service id="Tuzex\Responder\Response\ResponseFactory\UriRedirectResponseFactory"/>
+        <service id="Tuzex\Responder\Response\ResponseFactory\UrlRedirectResponseFactory"/>
 
         <service id="Tuzex\Responder\Service\FlashMessagePublisher" alias="Tuzex\Responder\Bridge\HttpFoundation\SessionFlashMessagePublisher"/>
         <service id="Tuzex\Responder\Service\TemplateRenderer" alias="Tuzex\Responder\Bridge\Twig\TwigTemplateRenderer"/>

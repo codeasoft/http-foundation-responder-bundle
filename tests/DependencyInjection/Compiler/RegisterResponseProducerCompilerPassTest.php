@@ -10,8 +10,8 @@ use Symfony\Component\DependencyInjection\Reference;
 use Tuzex\Bundle\Responder\DependencyInjection\Compiler\RegisterResponseProducerCompilerPass;
 use Tuzex\Bundle\Responder\Test\FakeContainerBuilderFactory;
 use Tuzex\Responder\Middleware\ResponseProducer;
-use Tuzex\Responder\Response\Factory\JsonResponseFactory;
-use Tuzex\Responder\Response\Factory\TextResponseFactory;
+use Tuzex\Responder\Response\ResponseFactory\JsonResponseFactory;
+use Tuzex\Responder\Response\ResponseFactory\TextResponseFactory;
 
 final class RegisterResponseProducerCompilerPassTest extends TestCase
 {

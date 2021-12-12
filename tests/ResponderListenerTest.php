@@ -13,7 +13,7 @@ use Tuzex\Bundle\Responder\ResponderListener;
 use Tuzex\Responder\ContextResponder;
 use Tuzex\Responder\Middleware\ResponseProducer;
 use Tuzex\Responder\Response\Factory\TextResponseFactory;
-use Tuzex\Responder\Response\Resource\PlainText;
+use Tuzex\Responder\Response\ResponseFactory\TextResponseFactory;
 
 final class ResponderListenerTest extends TestCase
 {
