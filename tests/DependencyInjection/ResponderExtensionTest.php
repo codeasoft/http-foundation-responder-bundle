@@ -14,6 +14,7 @@ use Tuzex\Responder\Bridge\HttpFoundation\Request\RequestReferrerProvider;
 use Tuzex\Responder\Bridge\HttpFoundation\Request\RequestUriProvider;
 use Tuzex\Responder\Bridge\HttpFoundation\SessionFlashMessagePublisher;
 use Tuzex\Responder\Bridge\Twig\TwigTemplateRenderer;
+use Tuzex\Responder\FlexibleResponder;
 use Tuzex\Responder\Http\ReferrerProvider;
 use Tuzex\Responder\Http\UriProvider;
 use Tuzex\Responder\Middleware;
@@ -97,6 +98,7 @@ final class ResponderExtensionTest extends TestCase
         $serviceAliases = [
             FlashMessagePublisher::class => SessionFlashMessagePublisher::class,
             ReferrerProvider::class => RequestReferrerProvider::class,
+            Responder::class => FlexibleResponder::class,
             TemplateRenderer::class => TwigTemplateRenderer::class,
             UriProvider::class => RequestUriProvider::class,
         ];

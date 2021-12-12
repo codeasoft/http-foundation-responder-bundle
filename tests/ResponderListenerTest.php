@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Tuzex\Bundle\Responder\ResponderListener;
-use Tuzex\Responder\ContextResponder;
+use Tuzex\Responder\FlexibleResponder;
 use Tuzex\Responder\Middleware\ResponseProducer;
 use Tuzex\Responder\Response\Factory\TextResponseFactory;
 use Tuzex\Responder\Response\ResponseFactory\TextResponseFactory;
@@ -22,7 +22,7 @@ final class ResponderListenerTest extends TestCase
      */
     public function testItCreatesResponseFromControllerResult(ViewEvent $viewEvent, bool $expectResponse): void
     {
-        $responder = new ContextResponder(
+        $responder = new FlexibleResponder(
             new ResponseProducer(
                 new TextResponseFactory()
             )
