@@ -14,22 +14,44 @@ use Tuzex\Responder\Service\FlashMessagePublisher;
 
 final class ResetFlashMessagePublisherCompilerPass implements CompilerPassInterface
 {
-    public function process(ContainerBuilder $containerBuilder): void
+    public function process(ContainerBuilder $container): void
     {
-        $translatorId = TranslatorInterface::class;
-        if (! $containerBuilder->hasDefinition($translatorId)) {
+        if (! $this->existsTranslator($container)) {
             return;
         }
 
-        $publisherId = TranslatableSessionFlashMessagePublisher::class;
-        $serviceIds = [
-            SessionFlashMessagePublisher::class,
-            $translatorId,
+        $publisherId = $this->getTranslatablePublisherId();
+        $publisherArguments = [
+            $this->getPublisherId(),
+            $this->getTranslatorId(),
         ];
 
-        $publisherAlias = FlashMessagePublisher::class;
+        $container->setDefinition($publisherId, DefinitionFactory::create($publisherId, $publisherArguments));
+        $container->setAlias($this->getPublisherAlias(), $publisherId);
+    }
 
-        $containerBuilder->setDefinition($publisherId, DefinitionFactory::create($publisherId, $serviceIds));
-        $containerBuilder->setAlias($publisherAlias, $publisherId);
+    private function existsTranslator(ContainerBuilder $container): bool
+    {
+        return $container->hasDefinition($this->getTranslatorId());
+    }
+
+    private function getTranslatorId(): string
+    {
+        return TranslatorInterface::class;
+    }
+
+    private function getPublisherId(): string
+    {
+        return SessionFlashMessagePublisher::class;
+    }
+
+    private function getTranslatablePublisherId(): string
+    {
+        return TranslatableSessionFlashMessagePublisher::class;
+    }
+
+    private function getPublisherAlias(): string
+    {
+        return FlashMessagePublisher::class;
     }
 }

@@ -27,22 +27,37 @@ final class ResetFlashMessagePublisherCompilerPassTest extends TestCase
 
     public function testItDoesNotRegistersTranslatableServiceIfNotUsingTranslator(): void
     {
-        $publisherId = TranslatableSessionFlashMessagePublisher::class;
-
         $this->compilerPass->process($this->containerBuilder);
 
-        $this->assertFalse($this->containerBuilder->has($publisherId));
+        $this->assertFalse(
+            $this->containerBuilder->has($this->getTranslatablePublisherId())
+        );
     }
 
     public function testItRegistersTranslatableServiceIfUsingTranslator(): void
     {
-        $publisherId = TranslatableSessionFlashMessagePublisher::class;
-        $translatorId = TranslatorInterface::class;
+        $publisherId = $this->getTranslatablePublisherId();
+        $translatorId = $this->getTranslatorId();
 
         $this->containerBuilder->setDefinition($translatorId, DefinitionFactory::create($translatorId));
         $this->compilerPass->process($this->containerBuilder);
 
         $this->assertTrue($this->containerBuilder->has($publisherId));
-        $this->assertSame($publisherId, (string) $this->containerBuilder->getAlias(FlashMessagePublisher::class));
+        $this->assertSame($publisherId, (string) $this->containerBuilder->getAlias($this->getPublisherAlias()));
+    }
+
+    private function getTranslatorId(): string
+    {
+        return TranslatorInterface::class;
+    }
+
+    private function getTranslatablePublisherId(): string
+    {
+        return TranslatableSessionFlashMessagePublisher::class;
+    }
+
+    private function getPublisherAlias(): string
+    {
+        return FlashMessagePublisher::class;
     }
 }
