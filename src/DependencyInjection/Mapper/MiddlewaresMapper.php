@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 final class MiddlewaresMapper
 {
     /**
-     * @return array<string, string>
+     * @return array<int, string>
      */
     public static function map(ContainerBuilder $containerBuilder): array
     {
