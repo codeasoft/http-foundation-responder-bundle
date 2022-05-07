@@ -7,7 +7,7 @@ namespace Tuzex\Bundle\Responder\Test;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Tuzex\Bundle\Responder\DependencyInjection\Compiler\RegisterFlexibleResponderCompilerPas;
+use Tuzex\Bundle\Responder\DependencyInjection\Compiler\RegisterMiddlewareResponderCompilerPas;
 use Tuzex\Bundle\Responder\DependencyInjection\Compiler\RegisterResponseProducerCompilerPass;
 use Tuzex\Bundle\Responder\DependencyInjection\Compiler\ResetFlashMessagePublisherCompilerPass;
 use Tuzex\Bundle\Responder\ResponderBundle;
@@ -40,7 +40,7 @@ final class ResponderBundleTest extends TestCase
     {
         $compilerPasses = [
             RegisterResponseProducerCompilerPass::class,
-            RegisterFlexibleResponderCompilerPas::class,
+            RegisterMiddlewareResponderCompilerPas::class,
             ResetFlashMessagePublisherCompilerPass::class,
         ];
 

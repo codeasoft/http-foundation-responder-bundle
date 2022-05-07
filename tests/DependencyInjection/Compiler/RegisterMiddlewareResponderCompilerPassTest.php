@@ -6,20 +6,20 @@ namespace Tuzex\Bundle\Responder\Test\DependencyInjection\Compiler;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Tuzex\Bundle\Responder\DependencyInjection\Compiler\RegisterFlexibleResponderCompilerPas;
+use Tuzex\Bundle\Responder\DependencyInjection\Compiler\RegisterMiddlewareResponderCompilerPas;
 use Tuzex\Bundle\Responder\Test\FakeContainerBuilderFactory;
-use Tuzex\Responder\FlexibleResponder;
 use Tuzex\Responder\Middleware\ResponseProducer;
+use Tuzex\Responder\MiddlewareResponder;
 use Tuzex\Responder\Service\FlashMessagePublisher;
 
-final class RegisterFlexibleResponderCompilerPassTest extends TestCase
+final class RegisterMiddlewareResponderCompilerPassTest extends TestCase
 {
-    private RegisterFlexibleResponderCompilerPas $compilerPass;
+    private RegisterMiddlewareResponderCompilerPas $compilerPass;
 
     protected function setUp(): void
     {
         parent::setUp();
-        $this->compilerPass = new RegisterFlexibleResponderCompilerPas();
+        $this->compilerPass = new RegisterMiddlewareResponderCompilerPas();
     }
 
     public function testItRegistersWithResponseProducer(): void
@@ -77,7 +77,7 @@ final class RegisterFlexibleResponderCompilerPassTest extends TestCase
 
     private function getResponderId(): string
     {
-        return FlexibleResponder::class;
+        return MiddlewareResponder::class;
     }
 
     private function getResponseProducerId(): string

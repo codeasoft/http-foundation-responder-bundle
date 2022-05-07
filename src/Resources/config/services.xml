@@ -31,7 +31,7 @@
         <service id="Tuzex\Responder\Service\FlashMessagePublisher" alias="Tuzex\Responder\Bridge\HttpFoundation\SessionFlashMessagePublisher"/>
         <service id="Tuzex\Responder\Service\TemplateRenderer" alias="Tuzex\Responder\Bridge\Twig\TwigTemplateRenderer"/>
 
-        <service id="Tuzex\Responder\Responder" alias="Tuzex\Responder\FlexibleResponder"/>
+        <service id="Tuzex\Responder\Responder" alias="Tuzex\Responder\MiddlewareResponder"/>
 
         <service id="Tuzex\Bundle\Responder\ResponderListener">
             <tag name="kernel.event_listener" event="kernel.view" priority="-256"/>

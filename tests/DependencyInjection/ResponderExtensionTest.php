@@ -14,11 +14,11 @@ use Tuzex\Responder\Bridge\HttpFoundation\Request\RequestReferrerProvider;
 use Tuzex\Responder\Bridge\HttpFoundation\Request\RequestUriProvider;
 use Tuzex\Responder\Bridge\HttpFoundation\SessionFlashMessagePublisher;
 use Tuzex\Responder\Bridge\Twig\TwigTemplateRenderer;
-use Tuzex\Responder\FlexibleResponder;
 use Tuzex\Responder\Http\ReferrerProvider;
 use Tuzex\Responder\Http\UriProvider;
 use Tuzex\Responder\Middleware;
 use Tuzex\Responder\Middleware\FlashMessageEmitter;
+use Tuzex\Responder\MiddlewareResponder;
 use Tuzex\Responder\Responder;
 use Tuzex\Responder\Response\ResponseFactory;
 use Tuzex\Responder\Response\ResponseFactory\FileResponseFactory;
@@ -98,7 +98,7 @@ final class ResponderExtensionTest extends TestCase
         $serviceAliases = [
             FlashMessagePublisher::class => SessionFlashMessagePublisher::class,
             ReferrerProvider::class => RequestReferrerProvider::class,
-            Responder::class => FlexibleResponder::class,
+            Responder::class => MiddlewareResponder::class,
             TemplateRenderer::class => TwigTemplateRenderer::class,
             UriProvider::class => RequestUriProvider::class,
         ];

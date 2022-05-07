@@ -7,8 +7,8 @@ namespace Tuzex\Bundle\Responder\Test;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Tuzex\Bundle\Responder\DependencyInjection\Helper\DefinitionFactory;
-use Tuzex\Responder\FlexibleResponder;
 use Tuzex\Responder\Middleware\ResponseProducer;
+use Tuzex\Responder\MiddlewareResponder;
 
 final class FakeContainerBuilderFactory
 {
@@ -19,7 +19,7 @@ final class FakeContainerBuilderFactory
 
     public static function withResponderAndMiddlewares(string ...$middlewareIds): ContainerBuilder
     {
-        $responderId = FlexibleResponder::class;
+        $responderId = MiddlewareResponder::class;
         $responderServiceIds = [
             ResponseProducer::class,
         ];

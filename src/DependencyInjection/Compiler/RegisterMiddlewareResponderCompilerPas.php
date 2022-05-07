@@ -8,14 +8,14 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Tuzex\Bundle\Responder\DependencyInjection\Helper\DefinitionFactory;
 use Tuzex\Bundle\Responder\DependencyInjection\Mapper\MiddlewaresMapper;
-use Tuzex\Responder\FlexibleResponder;
 use Tuzex\Responder\Middleware\ResponseProducer;
+use Tuzex\Responder\MiddlewareResponder;
 
-final class RegisterFlexibleResponderCompilerPas implements CompilerPassInterface
+final class RegisterMiddlewareResponderCompilerPas implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container): void
     {
-        $responderId = FlexibleResponder::class;
+        $responderId = MiddlewareResponder::class;
         $responderArguments = $this->mapResponderArguments($container);
 
         $container->setDefinition($responderId, DefinitionFactory::create($responderId, $responderArguments));
