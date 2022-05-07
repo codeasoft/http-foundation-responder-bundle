@@ -29,8 +29,8 @@
   },
   "require": {
     "php": "^8.1",
-    "symfony/framework-bundle": "6.*",
-    "symfony/twig-bundle": "6.*",
+    "symfony/framework-bundle": "5.*|6.*",
+    "symfony/twig-bundle": "5.*|6.*",
     "tuzex/responder": "0.11.*"
   },
   "require-dev": {
