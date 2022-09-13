@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tuzex\Bundle\Responder\Test\DependencyInjection\Helper;
+namespace Codea\Bundle\Responder\Test\DependencyInjection\Helper;
 
+use Codea\Bundle\Responder\DependencyInjection\Helper\DefinitionFactory;
+use Codea\Responder\Middleware\ResponseProducer;
+use Codea\Responder\Response\ResponseFactory\JsonResponseFactory;
+use Codea\Responder\Response\ResponseFactory\TextResponseFactory;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\Reference;
-use Tuzex\Bundle\Responder\DependencyInjection\Helper\DefinitionFactory;
-use Tuzex\Responder\Middleware\ResponseProducer;
-use Tuzex\Responder\Response\ResponseFactory\JsonResponseFactory;
-use Tuzex\Responder\Response\ResponseFactory\TextResponseFactory;
 
 final class DefinitionFactoryTest extends TestCase
 {

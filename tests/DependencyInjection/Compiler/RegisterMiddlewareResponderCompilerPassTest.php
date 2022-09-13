@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tuzex\Bundle\Responder\Test\DependencyInjection\Compiler;
+namespace Codea\Bundle\Responder\Test\DependencyInjection\Compiler;
 
+use Codea\Bundle\Responder\DependencyInjection\Compiler\RegisterMiddlewareResponderCompilerPas;
+use Codea\Bundle\Responder\Test\FakeContainerBuilderFactory;
+use Codea\Responder\Middleware\ResponseProducer;
+use Codea\Responder\MiddlewareResponder;
+use Codea\Responder\Service\FlashMessagePublisher;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Tuzex\Bundle\Responder\DependencyInjection\Compiler\RegisterMiddlewareResponderCompilerPas;
-use Tuzex\Bundle\Responder\Test\FakeContainerBuilderFactory;
-use Tuzex\Responder\Middleware\ResponseProducer;
-use Tuzex\Responder\MiddlewareResponder;
-use Tuzex\Responder\Service\FlashMessagePublisher;
 
 final class RegisterMiddlewareResponderCompilerPassTest extends TestCase
 {

@@ -2,39 +2,40 @@
 
 declare(strict_types=1);
 
-namespace Tuzex\Bundle\Responder\Test\DependencyInjection;
+namespace Codea\Bundle\Responder\Test\DependencyInjection;
 
+use Codea\Bundle\Responder\DependencyInjection\ResponderExtension;
+use Codea\Bundle\Responder\ResponderListener;
+use Codea\Responder\Bridge\HttpFoundation\Request\RequestAccessor;
+use Codea\Responder\Bridge\HttpFoundation\Request\RequestFlashBagProvider;
+use Codea\Responder\Bridge\HttpFoundation\Request\RequestReferrerProvider;
+use Codea\Responder\Bridge\HttpFoundation\Request\RequestUriProvider;
+use Codea\Responder\Bridge\HttpFoundation\SessionFlashMessagePublisher;
+use Codea\Responder\Bridge\Twig\TwigTemplateRenderer;
+use Codea\Responder\Http\ReferrerProvider;
+use Codea\Responder\Http\UriProvider;
+use Codea\Responder\Middleware;
+use Codea\Responder\Middleware\FlashMessageEmitter;
+use Codea\Responder\MiddlewareResponder;
+use Codea\Responder\Responder;
+use Codea\Responder\Response\ResponseFactory;
+use Codea\Responder\Response\ResponseFactory\FileResponseFactory;
+use Codea\Responder\Response\ResponseFactory\JsonResponseFactory;
+use Codea\Responder\Response\ResponseFactory\ReferrerRedirectResponseFactory;
+use Codea\Responder\Response\ResponseFactory\RouteRedirectResponseFactory;
+use Codea\Responder\Response\ResponseFactory\TextResponseFactory;
+use Codea\Responder\Response\ResponseFactory\TwigResponseFactory;
+use Codea\Responder\Response\ResponseFactory\UriRedirectResponseFactory;
+use Codea\Responder\Response\ResponseFactory\UrlRedirectResponseFactory;
+use Codea\Responder\Service\FlashMessagePublisher;
+use Codea\Responder\Service\TemplateRenderer;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Tuzex\Bundle\Responder\DependencyInjection\ResponderExtension;
-use Tuzex\Bundle\Responder\ResponderListener;
-use Tuzex\Responder\Bridge\HttpFoundation\Request\RequestAccessor;
-use Tuzex\Responder\Bridge\HttpFoundation\Request\RequestFlashBagProvider;
-use Tuzex\Responder\Bridge\HttpFoundation\Request\RequestReferrerProvider;
-use Tuzex\Responder\Bridge\HttpFoundation\Request\RequestUriProvider;
-use Tuzex\Responder\Bridge\HttpFoundation\SessionFlashMessagePublisher;
-use Tuzex\Responder\Bridge\Twig\TwigTemplateRenderer;
-use Tuzex\Responder\Http\ReferrerProvider;
-use Tuzex\Responder\Http\UriProvider;
-use Tuzex\Responder\Middleware;
-use Tuzex\Responder\Middleware\FlashMessageEmitter;
-use Tuzex\Responder\MiddlewareResponder;
-use Tuzex\Responder\Responder;
-use Tuzex\Responder\Response\ResponseFactory;
-use Tuzex\Responder\Response\ResponseFactory\FileResponseFactory;
-use Tuzex\Responder\Response\ResponseFactory\JsonResponseFactory;
-use Tuzex\Responder\Response\ResponseFactory\ReferrerRedirectResponseFactory;
-use Tuzex\Responder\Response\ResponseFactory\RouteRedirectResponseFactory;
-use Tuzex\Responder\Response\ResponseFactory\TextResponseFactory;
-use Tuzex\Responder\Response\ResponseFactory\TwigResponseFactory;
-use Tuzex\Responder\Response\ResponseFactory\UriRedirectResponseFactory;
-use Tuzex\Responder\Response\ResponseFactory\UrlRedirectResponseFactory;
-use Tuzex\Responder\Service\FlashMessagePublisher;
-use Tuzex\Responder\Service\TemplateRenderer;
 
 final class ResponderExtensionTest extends TestCase
 {
     private ResponderExtension $responderExtension;
+
     private ContainerBuilder $containerBuilder;
 
     protected function setUp(): void
@@ -125,8 +126,8 @@ final class ResponderExtensionTest extends TestCase
     public function provideServiceTags(): iterable
     {
         $serviceTags = [
-            Middleware::class => 'tuzex.responder.middleware',
-            ResponseFactory::class => 'tuzex.responder.response_factory',
+            Middleware::class => 'codea.responder.middleware',
+            ResponseFactory::class => 'codea.responder.response_factory',
         ];
 
         foreach ($serviceTags as $serviceId => $serviceTag) {

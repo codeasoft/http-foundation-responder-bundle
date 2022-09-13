@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tuzex\Bundle\Responder\DependencyInjection\Compiler;
+namespace Codea\Bundle\Responder\DependencyInjection\Compiler;
 
+use Codea\Bundle\Responder\DependencyInjection\Helper\DefinitionFactory;
+use Codea\Responder\Bridge\HttpFoundation\SessionFlashMessagePublisher;
+use Codea\Responder\Bridge\HttpFoundation\TranslatableSessionFlashMessagePublisher;
+use Codea\Responder\Service\FlashMessagePublisher;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Tuzex\Bundle\Responder\DependencyInjection\Helper\DefinitionFactory;
-use Tuzex\Responder\Bridge\HttpFoundation\SessionFlashMessagePublisher;
-use Tuzex\Responder\Bridge\HttpFoundation\TranslatableSessionFlashMessagePublisher;
-use Tuzex\Responder\Service\FlashMessagePublisher;
 
 final class ResetFlashMessagePublisherCompilerPass implements CompilerPassInterface
 {

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Tuzex\Bundle\Responder\Test\DependencyInjection\Compiler;
+namespace Codea\Bundle\Responder\Test\DependencyInjection\Compiler;
 
+use Codea\Bundle\Responder\DependencyInjection\Compiler\RegisterResponseProducerCompilerPass;
+use Codea\Bundle\Responder\Test\FakeContainerBuilderFactory;
+use Codea\Responder\Middleware\ResponseProducer;
+use Codea\Responder\Response\ResponseFactory\JsonResponseFactory;
+use Codea\Responder\Response\ResponseFactory\TextResponseFactory;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
-use Tuzex\Bundle\Responder\DependencyInjection\Compiler\RegisterResponseProducerCompilerPass;
-use Tuzex\Bundle\Responder\Test\FakeContainerBuilderFactory;
-use Tuzex\Responder\Middleware\ResponseProducer;
-use Tuzex\Responder\Response\ResponseFactory\JsonResponseFactory;
-use Tuzex\Responder\Response\ResponseFactory\TextResponseFactory;
 
 final class RegisterResponseProducerCompilerPassTest extends TestCase
 {
@@ -30,7 +30,7 @@ final class RegisterResponseProducerCompilerPassTest extends TestCase
         );
 
         $this->assertSame($responseFactoryIds, $middlewareFactoryIds);
-        $this->assertTrue($middlewareDefinition->hasTag('tuzex.responder.middleware'));
+        $this->assertTrue($middlewareDefinition->hasTag('codea.responder.middleware'));
     }
 
     public function provideData(): iterable

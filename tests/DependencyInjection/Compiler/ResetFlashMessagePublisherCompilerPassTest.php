@@ -2,19 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Tuzex\Bundle\Responder\Test\DependencyInjection\Compiler;
+namespace Codea\Bundle\Responder\Test\DependencyInjection\Compiler;
 
+use Codea\Bundle\Responder\DependencyInjection\Compiler\ResetFlashMessagePublisherCompilerPass;
+use Codea\Bundle\Responder\DependencyInjection\Helper\DefinitionFactory;
+use Codea\Responder\Bridge\HttpFoundation\TranslatableSessionFlashMessagePublisher;
+use Codea\Responder\Service\FlashMessagePublisher;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Tuzex\Bundle\Responder\DependencyInjection\Compiler\ResetFlashMessagePublisherCompilerPass;
-use Tuzex\Bundle\Responder\DependencyInjection\Helper\DefinitionFactory;
-use Tuzex\Responder\Bridge\HttpFoundation\TranslatableSessionFlashMessagePublisher;
-use Tuzex\Responder\Service\FlashMessagePublisher;
 
 final class ResetFlashMessagePublisherCompilerPassTest extends TestCase
 {
     private ContainerBuilder $containerBuilder;
+
     private ResetFlashMessagePublisherCompilerPass $compilerPass;
 
     protected function setUp(): void

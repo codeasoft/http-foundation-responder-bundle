@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tuzex\Bundle\Responder\Test\DependencyInjection\Helper;
+namespace Codea\Bundle\Responder\Test\DependencyInjection\Helper;
 
+use Codea\Bundle\Responder\DependencyInjection\Helper\ReferencesResolver;
+use Codea\Bundle\Responder\ResponderBundle;
+use Codea\Bundle\Responder\ResponderListener;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\Reference;
-use Tuzex\Bundle\Responder\DependencyInjection\Helper\ReferencesResolver;
-use Tuzex\Bundle\Responder\ResponderBundle;
-use Tuzex\Bundle\Responder\ResponderListener;
 
 final class ReferencesResolverTest extends TestCase
 {

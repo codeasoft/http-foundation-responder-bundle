@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tuzex\Bundle\Responder\DependencyInjection\Compiler;
+namespace Codea\Bundle\Responder\DependencyInjection\Compiler;
 
+use Codea\Bundle\Responder\DependencyInjection\Helper\DefinitionFactory;
+use Codea\Bundle\Responder\DependencyInjection\Mapper\ResponseFactoriesMapper;
+use Codea\Responder\Middleware\ResponseProducer;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Tuzex\Bundle\Responder\DependencyInjection\Helper\DefinitionFactory;
-use Tuzex\Bundle\Responder\DependencyInjection\Mapper\ResponseFactoriesMapper;
-use Tuzex\Responder\Middleware\ResponseProducer;
 
 final class RegisterResponseProducerCompilerPass implements CompilerPassInterface
 {
@@ -18,6 +18,6 @@ final class RegisterResponseProducerCompilerPass implements CompilerPassInterfac
         $responseFactoryIds = ResponseFactoriesMapper::map($container);
 
         $container->setDefinition($responseProducerId, DefinitionFactory::create($responseProducerId, $responseFactoryIds))
-            ->addTag('tuzex.responder.middleware');
+            ->addTag('codea.responder.middleware');
     }
 }

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tuzex\Bundle\Responder\DependencyInjection\Compiler;
+namespace Codea\Bundle\Responder\DependencyInjection\Compiler;
 
+use Codea\Bundle\Responder\DependencyInjection\Helper\DefinitionFactory;
+use Codea\Bundle\Responder\DependencyInjection\Mapper\MiddlewaresMapper;
+use Codea\Responder\Middleware\ResponseProducer;
+use Codea\Responder\MiddlewareResponder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Tuzex\Bundle\Responder\DependencyInjection\Helper\DefinitionFactory;
-use Tuzex\Bundle\Responder\DependencyInjection\Mapper\MiddlewaresMapper;
-use Tuzex\Responder\Middleware\ResponseProducer;
-use Tuzex\Responder\MiddlewareResponder;
 
 final class RegisterMiddlewareResponderCompilerPas implements CompilerPassInterface
 {
@@ -30,7 +30,7 @@ final class RegisterMiddlewareResponderCompilerPas implements CompilerPassInterf
 
     private function putResponderProducerBeforeOtherMiddlewares(array $middlewareIds): array
     {
-        uksort($middlewareIds, fn (string $middlewareId): int => (ResponseProducer::class === $middlewareId) ? -1 : 1);
+        uksort($middlewareIds, fn (string $middlewareId): int => ($middlewareId === ResponseProducer::class) ? -1 : 1);
 
         return $middlewareIds;
     }

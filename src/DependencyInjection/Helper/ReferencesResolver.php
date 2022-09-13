@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tuzex\Bundle\Responder\DependencyInjection\Helper;
+namespace Codea\Bundle\Responder\DependencyInjection\Helper;
 
 use Symfony\Component\DependencyInjection\Reference;
 

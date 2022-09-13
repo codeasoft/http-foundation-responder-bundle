@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tuzex\Bundle\Responder;
+namespace Codea\Bundle\Responder;
 
+use Codea\Bundle\Responder\DependencyInjection\Compiler\RegisterMiddlewareResponderCompilerPas;
+use Codea\Bundle\Responder\DependencyInjection\Compiler\RegisterResponseProducerCompilerPass;
+use Codea\Bundle\Responder\DependencyInjection\Compiler\ResetFlashMessagePublisherCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
-use Tuzex\Bundle\Responder\DependencyInjection\Compiler\RegisterMiddlewareResponderCompilerPas;
-use Tuzex\Bundle\Responder\DependencyInjection\Compiler\RegisterResponseProducerCompilerPass;
-use Tuzex\Bundle\Responder\DependencyInjection\Compiler\ResetFlashMessagePublisherCompilerPass;
 
 final class ResponderBundle extends Bundle implements BundleInterface
 {

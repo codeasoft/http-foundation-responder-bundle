@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Tuzex\Bundle\Responder\Test;
+namespace Codea\Bundle\Responder\Test;
 
+use Codea\Bundle\Responder\ResponderListener;
+use Codea\Responder\Middleware\ResponseProducer;
+use Codea\Responder\MiddlewareResponder;
+use Codea\Responder\Response\Resource\Payload\PlainText;
+use Codea\Responder\Response\ResponseFactory\TextResponseFactory;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
-use Tuzex\Bundle\Responder\ResponderListener;
-use Tuzex\Responder\Middleware\ResponseProducer;
-use Tuzex\Responder\MiddlewareResponder;
-use Tuzex\Responder\Response\Resource\Payload\PlainText;
-use Tuzex\Responder\Response\ResponseFactory\TextResponseFactory;
 
 final class ResponderListenerTest extends TestCase
 {

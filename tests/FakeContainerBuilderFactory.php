@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Tuzex\Bundle\Responder\Test;
+namespace Codea\Bundle\Responder\Test;
 
+use Codea\Bundle\Responder\DependencyInjection\Helper\DefinitionFactory;
+use Codea\Responder\Middleware\ResponseProducer;
+use Codea\Responder\MiddlewareResponder;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
-use Tuzex\Bundle\Responder\DependencyInjection\Helper\DefinitionFactory;
-use Tuzex\Responder\Middleware\ResponseProducer;
-use Tuzex\Responder\MiddlewareResponder;
 
 final class FakeContainerBuilderFactory
 {
     public static function withMiddlewares(string ...$middlewareIds): ContainerBuilder
     {
-        return self::create($middlewareIds, 'tuzex.responder.middleware');
+        return self::create($middlewareIds, 'codea.responder.middleware');
     }
 
     public static function withResponderAndMiddlewares(string ...$middlewareIds): ContainerBuilder
@@ -32,7 +32,7 @@ final class FakeContainerBuilderFactory
 
     public static function withResponseFactories(string ...$responseFactoryIds): ContainerBuilder
     {
-        return self::create($responseFactoryIds, 'tuzex.responder.response_factory');
+        return self::create($responseFactoryIds, 'codea.responder.response_factory');
     }
 
     private static function create(array $serviceIds, string $tag): ContainerBuilder

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tuzex\Bundle\Responder\DependencyInjection\Mapper;
+namespace Codea\Bundle\Responder\DependencyInjection\Mapper;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -14,7 +14,7 @@ final class MiddlewaresMapper
     public static function map(ContainerBuilder $containerBuilder): array
     {
         return array_keys(
-            $containerBuilder->findTaggedServiceIds('tuzex.responder.middleware')
+            $containerBuilder->findTaggedServiceIds('codea.responder.middleware')
         );
     }
 }
