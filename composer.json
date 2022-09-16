@@ -29,7 +29,7 @@
   },
   "require": {
     "php": "^8.1",
-    "codea/symfony-responder": "0.11.*",
+    "codea/http-foundation-responder": "0.11.*",
     "symfony/framework-bundle": "5.*|6.*",
     "symfony/twig-bundle": "5.*|6.*"
   },
