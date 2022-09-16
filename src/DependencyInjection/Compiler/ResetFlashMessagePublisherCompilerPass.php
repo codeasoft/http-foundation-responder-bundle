@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Codea\Bundle\Responder\DependencyInjection\Compiler;
+namespace Codea\Bundle\SmartReply\DependencyInjection\Compiler;
 
-use Codea\Bundle\Responder\DependencyInjection\Helper\DefinitionFactory;
-use Codea\Responder\Bridge\HttpFoundation\SessionFlashMessagePublisher;
-use Codea\Responder\Bridge\HttpFoundation\TranslatableSessionFlashMessagePublisher;
-use Codea\Responder\Service\FlashMessagePublisher;
+use Codea\Bundle\SmartReply\DependencyInjection\Helper\DefinitionFactory;
+use Codea\SmartReply\Bridge\HttpFoundation\SessionFlashMessagePublisher;
+use Codea\SmartReply\Bridge\HttpFoundation\TranslatableSessionFlashMessagePublisher;
+use Codea\SmartReply\Service\FlashMessagePublisher;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Contracts\Translation\TranslatorInterface;

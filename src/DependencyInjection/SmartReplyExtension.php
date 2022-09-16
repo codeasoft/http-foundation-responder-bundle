@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Codea\Bundle\Responder\DependencyInjection;
+namespace Codea\Bundle\SmartReply\DependencyInjection;
 
-use Codea\Responder\Middleware;
-use Codea\Responder\Response\ResponseFactory;
+use Codea\SmartReply\Middleware;
+use Codea\SmartReply\Response\ResponseFactory;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -13,7 +13,7 @@ use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
-final class ResponderExtension extends Extension implements ExtensionInterface, PrependExtensionInterface
+final class SmartReplyExtension extends Extension implements ExtensionInterface, PrependExtensionInterface
 {
     private FileLocator $fileLocator;
 

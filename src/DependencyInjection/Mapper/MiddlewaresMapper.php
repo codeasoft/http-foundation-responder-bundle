@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Codea\Bundle\Responder\DependencyInjection\Mapper;
+namespace Codea\Bundle\SmartReply\DependencyInjection\Mapper;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 

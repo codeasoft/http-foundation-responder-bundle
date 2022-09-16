@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Codea\Bundle\Responder\Test\DependencyInjection\Helper;
+namespace Codea\Bundle\SmartReply\Test\DependencyInjection\Helper;
 
-use Codea\Bundle\Responder\DependencyInjection\Helper\DefinitionFactory;
-use Codea\Responder\Middleware\ResponseProducer;
-use Codea\Responder\Response\ResponseFactory\JsonResponseFactory;
-use Codea\Responder\Response\ResponseFactory\TextResponseFactory;
+use Codea\Bundle\SmartReply\DependencyInjection\Helper\DefinitionFactory;
+use Codea\SmartReply\Middleware\ResponseProducer;
+use Codea\SmartReply\Response\ResponseFactory\JsonResponseFactory;
+use Codea\SmartReply\Response\ResponseFactory\TextResponseFactory;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\Reference;
 

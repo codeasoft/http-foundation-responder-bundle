@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Codea\Bundle\Responder\Test\DependencyInjection\Helper;
+namespace Codea\Bundle\SmartReply\Test\DependencyInjection\Helper;
 
-use Codea\Bundle\Responder\DependencyInjection\Helper\ReferencesResolver;
-use Codea\Bundle\Responder\ResponderBundle;
-use Codea\Bundle\Responder\ResponderListener;
+use Codea\Bundle\SmartReply\DependencyInjection\Helper\ReferencesResolver;
+use Codea\Bundle\SmartReply\ResponderListener;
+use Codea\Bundle\SmartReply\SmartReplyBundle;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\Reference;
 
@@ -31,7 +31,7 @@ final class ReferencesResolverTest extends TestCase
             ],
             'several' => [
                 ResponderListener::class,
-                ResponderBundle::class,
+                SmartReplyBundle::class,
             ],
         ];
 

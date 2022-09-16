@@ -2,45 +2,45 @@
 
 declare(strict_types=1);
 
-namespace Codea\Bundle\Responder\Test\DependencyInjection;
+namespace Codea\Bundle\SmartReply\Test\DependencyInjection;
 
-use Codea\Bundle\Responder\DependencyInjection\ResponderExtension;
-use Codea\Bundle\Responder\ResponderListener;
-use Codea\Responder\Bridge\HttpFoundation\Request\RequestAccessor;
-use Codea\Responder\Bridge\HttpFoundation\Request\RequestFlashBagProvider;
-use Codea\Responder\Bridge\HttpFoundation\Request\RequestReferrerProvider;
-use Codea\Responder\Bridge\HttpFoundation\Request\RequestUriProvider;
-use Codea\Responder\Bridge\HttpFoundation\SessionFlashMessagePublisher;
-use Codea\Responder\Bridge\Twig\TwigTemplateRenderer;
-use Codea\Responder\Http\ReferrerProvider;
-use Codea\Responder\Http\UriProvider;
-use Codea\Responder\Middleware;
-use Codea\Responder\Middleware\FlashMessageEmitter;
-use Codea\Responder\MiddlewareResponder;
-use Codea\Responder\Responder;
-use Codea\Responder\Response\ResponseFactory;
-use Codea\Responder\Response\ResponseFactory\FileResponseFactory;
-use Codea\Responder\Response\ResponseFactory\JsonResponseFactory;
-use Codea\Responder\Response\ResponseFactory\ReferrerRedirectResponseFactory;
-use Codea\Responder\Response\ResponseFactory\RouteRedirectResponseFactory;
-use Codea\Responder\Response\ResponseFactory\TextResponseFactory;
-use Codea\Responder\Response\ResponseFactory\TwigResponseFactory;
-use Codea\Responder\Response\ResponseFactory\UriRedirectResponseFactory;
-use Codea\Responder\Response\ResponseFactory\UrlRedirectResponseFactory;
-use Codea\Responder\Service\FlashMessagePublisher;
-use Codea\Responder\Service\TemplateRenderer;
+use Codea\Bundle\SmartReply\DependencyInjection\SmartReplyExtension;
+use Codea\Bundle\SmartReply\ResponderListener;
+use Codea\SmartReply\Bridge\HttpFoundation\Request\RequestAccessor;
+use Codea\SmartReply\Bridge\HttpFoundation\Request\RequestFlashBagProvider;
+use Codea\SmartReply\Bridge\HttpFoundation\Request\RequestReferrerProvider;
+use Codea\SmartReply\Bridge\HttpFoundation\Request\RequestUriProvider;
+use Codea\SmartReply\Bridge\HttpFoundation\SessionFlashMessagePublisher;
+use Codea\SmartReply\Bridge\Twig\TwigTemplateRenderer;
+use Codea\SmartReply\Http\ReferrerProvider;
+use Codea\SmartReply\Http\UriProvider;
+use Codea\SmartReply\Middleware;
+use Codea\SmartReply\Middleware\FlashMessageEmitter;
+use Codea\SmartReply\MiddlewareResponder;
+use Codea\SmartReply\Responder;
+use Codea\SmartReply\Response\ResponseFactory;
+use Codea\SmartReply\Response\ResponseFactory\FileResponseFactory;
+use Codea\SmartReply\Response\ResponseFactory\JsonResponseFactory;
+use Codea\SmartReply\Response\ResponseFactory\ReferrerRedirectResponseFactory;
+use Codea\SmartReply\Response\ResponseFactory\RouteRedirectResponseFactory;
+use Codea\SmartReply\Response\ResponseFactory\TextResponseFactory;
+use Codea\SmartReply\Response\ResponseFactory\TwigResponseFactory;
+use Codea\SmartReply\Response\ResponseFactory\UriRedirectResponseFactory;
+use Codea\SmartReply\Response\ResponseFactory\UrlRedirectResponseFactory;
+use Codea\SmartReply\Service\FlashMessagePublisher;
+use Codea\SmartReply\Service\TemplateRenderer;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-final class ResponderExtensionTest extends TestCase
+final class SmartReplyExtensionTest extends TestCase
 {
-    private ResponderExtension $responderExtension;
+    private SmartReplyExtension $extension;
 
     private ContainerBuilder $containerBuilder;
 
     protected function setUp(): void
     {
-        $this->responderExtension = new ResponderExtension();
+        $this->extension = new SmartReplyExtension();
         $this->containerBuilder = new ContainerBuilder();
 
         parent::setUp();
@@ -51,7 +51,7 @@ final class ResponderExtensionTest extends TestCase
      */
     public function testItRegistersServices(string $serviceId): void
     {
-        $this->responderExtension->load([], $this->containerBuilder);
+        $this->extension->load([], $this->containerBuilder);
 
         $this->assertTrue($this->containerBuilder->hasDefinition($serviceId));
     }
@@ -89,7 +89,7 @@ final class ResponderExtensionTest extends TestCase
      */
     public function testItRegistersAliases(string $serviceAlias, string $serviceId): void
     {
-        $this->responderExtension->load([], $this->containerBuilder);
+        $this->extension->load([], $this->containerBuilder);
 
         $this->assertSame($serviceId, (string) $this->containerBuilder->getAlias($serviceAlias));
     }
@@ -117,7 +117,7 @@ final class ResponderExtensionTest extends TestCase
      */
     public function testItRegistersTags(string $serviceId, string $serviceTag): void
     {
-        $this->responderExtension->prepend($this->containerBuilder);
+        $this->extension->prepend($this->containerBuilder);
 
         $this->assertArrayHasKey($serviceId, $this->containerBuilder->getAutoconfiguredInstanceof());
         $this->assertArrayHasKey($serviceTag, $this->containerBuilder->getAutoconfiguredInstanceof()[$serviceId]->getTags());

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Codea\Bundle\Responder\Test\DependencyInjection\Compiler;
+namespace Codea\Bundle\SmartReply\Test\DependencyInjection\Compiler;
 
-use Codea\Bundle\Responder\DependencyInjection\Compiler\RegisterResponseProducerCompilerPass;
-use Codea\Bundle\Responder\Test\FakeContainerBuilderFactory;
-use Codea\Responder\Middleware\ResponseProducer;
-use Codea\Responder\Response\ResponseFactory\JsonResponseFactory;
-use Codea\Responder\Response\ResponseFactory\TextResponseFactory;
+use Codea\Bundle\SmartReply\DependencyInjection\Compiler\RegisterResponseProducerCompilerPass;
+use Codea\Bundle\SmartReply\Test\FakeContainerBuilderFactory;
+use Codea\SmartReply\Middleware\ResponseProducer;
+use Codea\SmartReply\Response\ResponseFactory\JsonResponseFactory;
+use Codea\SmartReply\Response\ResponseFactory\TextResponseFactory;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;

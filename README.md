@@ -1,19 +1,19 @@
-# Symfony Responder Bundle
+# Smart Reply Bundle
 
-[![PHP version](https://img.shields.io/packagist/php-v/codea/symfony-responder-bundle?style=flat-square)](http://php.net)
-[![Latest Version](https://img.shields.io/packagist/v/codea/symfony-responder-bundle?style=flat-square)](https://packagist.org/packages/codea/symfony-responder-bundle)
+[![PHP version](https://img.shields.io/packagist/php-v/codea/smart-reply?style=flat-square)](http://php.net)
+[![Latest Version](https://img.shields.io/packagist/v/codea/smart-reply?style=flat-square)](https://packagist.org/packages/codea/smart-reply)
 
-[![Build status](https://img.shields.io/github/workflow/status/codea/symfony-responder-bundle/Tests?style=flat-square)](https://github.com/codea/symfony-responder-bundle/actions?query=workflow%3ATests)
-[![Code Quality](https://img.shields.io/scrutinizer/quality/g/codea/symfony-responder-bundle?style=flat-square)](https://scrutinizer-ci.com/g/codea/symfony-responder-bundle/?branch=master)
-[![Coverage Status](https://img.shields.io/coveralls/github/codea/symfony-responder-bundle?style=flat-square)](https://coveralls.io/github/codea/symfony-responder-bundle?branch=master)
+[![Build status](https://img.shields.io/github/workflow/status/codea/smart-reply/Tests?style=flat-square)](https://github.com/codea/smart-reply/actions?query=workflow%3ATests)
+[![Code Quality](https://img.shields.io/scrutinizer/quality/g/codea/smart-reply?style=flat-square)](https://scrutinizer-ci.com/g/codea/smart-reply/?branch=master)
+[![Coverage Status](https://img.shields.io/coveralls/github/codea/smart-reply?style=flat-square)](https://coveralls.io/github/codea/smart-reply?branch=master)
 
-Intergation of smart responder based on the Symfony HTTP Foundation.
+Integration of smart responder based on the Symfony HTTP Foundation.
 
 Install
 -------
 
-The best way to install codea/symfony-responder-bundle is using the [Composer](http://getcomposer.org/):
+The best way to install codea/smart-reply is using the [Composer](http://getcomposer.org/):
 
 ```sh
-$ composer require codea/symfony-responder-bundle
+$ composer require codea/smart-reply
 ```

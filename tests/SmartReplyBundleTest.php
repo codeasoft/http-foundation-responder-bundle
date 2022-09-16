@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Codea\Bundle\Responder\Test;
+namespace Codea\Bundle\SmartReply\Test;
 
-use Codea\Bundle\Responder\DependencyInjection\Compiler\RegisterMiddlewareResponderCompilerPas;
-use Codea\Bundle\Responder\DependencyInjection\Compiler\RegisterResponseProducerCompilerPass;
-use Codea\Bundle\Responder\DependencyInjection\Compiler\ResetFlashMessagePublisherCompilerPass;
-use Codea\Bundle\Responder\ResponderBundle;
+use Codea\Bundle\SmartReply\DependencyInjection\Compiler\RegisterMiddlewareResponderCompilerPas;
+use Codea\Bundle\SmartReply\DependencyInjection\Compiler\RegisterResponseProducerCompilerPass;
+use Codea\Bundle\SmartReply\DependencyInjection\Compiler\ResetFlashMessagePublisherCompilerPass;
+use Codea\Bundle\SmartReply\SmartReplyBundle;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-final class ResponderBundleTest extends TestCase
+final class SmartReplyBundleTest extends TestCase
 {
-    private ResponderBundle $responderBundle;
+    private SmartReplyBundle $bundle;
 
     protected function setUp(): void
     {
-        $this->responderBundle = new ResponderBundle();
+        $this->bundle = new SmartReplyBundle();
 
         parent::setUp();
     }
@@ -28,7 +28,7 @@ final class ResponderBundleTest extends TestCase
      */
     public function testItRegistersCompilerPasses(string $compilerPassId): void
     {
-        $this->responderBundle->build($containerBuilder = new ContainerBuilder());
+        $this->bundle->build($containerBuilder = new ContainerBuilder());
 
         $this->assertCount(1, array_filter(
             $containerBuilder->getCompilerPassConfig()->getPasses(),

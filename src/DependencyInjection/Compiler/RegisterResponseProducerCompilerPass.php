@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Codea\Bundle\Responder\DependencyInjection\Compiler;
+namespace Codea\Bundle\SmartReply\DependencyInjection\Compiler;
 
-use Codea\Bundle\Responder\DependencyInjection\Helper\DefinitionFactory;
-use Codea\Bundle\Responder\DependencyInjection\Mapper\ResponseFactoriesMapper;
-use Codea\Responder\Middleware\ResponseProducer;
+use Codea\Bundle\SmartReply\DependencyInjection\Helper\DefinitionFactory;
+use Codea\Bundle\SmartReply\DependencyInjection\Mapper\ResponseFactoriesMapper;
+use Codea\SmartReply\Middleware\ResponseProducer;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
