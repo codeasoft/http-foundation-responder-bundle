@@ -12,8 +12,8 @@ Integration of smart responder based on the Symfony HTTP Foundation.
 Install
 -------
 
-The best way to install codea/smart-reply is using the [Composer](http://getcomposer.org/):
+The best way to install bundle is using the [Composer](http://getcomposer.org/):
 
 ```sh
-$ composer require codea/smart-reply
+$ composer require codea/smart-reply-bundle
 ```
