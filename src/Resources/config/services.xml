@@ -31,9 +31,9 @@
         <service id="Termyn\SmartReply\Service\FlashMessagePublisher" alias="Termyn\SmartReply\Bridge\HttpFoundation\SessionFlashMessagePublisher"/>
         <service id="Termyn\SmartReply\Service\TemplateRenderer" alias="Termyn\SmartReply\Bridge\Twig\TwigTemplateRenderer"/>
 
-        <service id="Codea\SmartReply\Responder" alias="Codea\SmartReply\MiddlewareResponder"/>
+        <service id="Termyn\SmartReply\Responder" alias="Termyn\SmartReply\MiddlewareResponder"/>
 
-        <service id="Codea\Bundle\SmartReply\ResponderListener">
+        <service id="Termyn\Bundle\SmartReply\ResponderListener">
             <tag name="kernel.event_listener" event="kernel.view" priority="-256"/>
         </service>
     </services>
