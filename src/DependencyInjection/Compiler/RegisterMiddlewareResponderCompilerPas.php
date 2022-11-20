@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Termyn\Bundle\SmartReply\DependencyInjection\Compiler;
 
+use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Termyn\Bundle\SmartReply\DependencyInjection\Helper\DefinitionFactory;
 use Termyn\Bundle\SmartReply\DependencyInjection\Mapper\MiddlewaresMapper;
 use Termyn\SmartReply\Middleware\ResponseProducer;
 use Termyn\SmartReply\MiddlewareResponder;
-use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 final class RegisterMiddlewareResponderCompilerPas implements CompilerPassInterface
 {

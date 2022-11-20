@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Termyn\Bundle\SmartReply\DependencyInjection;
 
-use Termyn\SmartReply\Middleware;
-use Termyn\SmartReply\Response\ResponseFactory;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Termyn\SmartReply\Middleware;
+use Termyn\SmartReply\Response\ResponseFactory;
 
 final class SmartReplyExtension extends Extension implements ExtensionInterface, PrependExtensionInterface
 {

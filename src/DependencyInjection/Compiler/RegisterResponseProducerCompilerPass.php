@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Termyn\Bundle\SmartReply\DependencyInjection\Compiler;
 
+use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Termyn\Bundle\SmartReply\DependencyInjection\Helper\DefinitionFactory;
 use Termyn\Bundle\SmartReply\DependencyInjection\Mapper\ResponseFactoriesMapper;
 use Termyn\SmartReply\Middleware\ResponseProducer;
-use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 final class RegisterResponseProducerCompilerPass implements CompilerPassInterface
 {

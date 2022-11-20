@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Termyn\Bundle\SmartReply;
 
+use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Termyn\SmartReply\Responder;
 use Termyn\SmartReply\Response\Resource;
-use Symfony\Component\HttpKernel\Event\ViewEvent;
 
 final class ResponderListener
 {

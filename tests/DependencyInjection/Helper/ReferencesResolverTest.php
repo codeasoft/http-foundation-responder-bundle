@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Termyn\Bundle\SmartReply\Test\DependencyInjection\Helper;
 
+use PHPUnit\Framework\TestCase;
+use Symfony\Component\DependencyInjection\Reference;
 use Termyn\Bundle\SmartReply\DependencyInjection\Helper\ReferencesResolver;
 use Termyn\Bundle\SmartReply\ResponderListener;
 use Termyn\Bundle\SmartReply\SmartReplyBundle;
-use PHPUnit\Framework\TestCase;
-use Symfony\Component\DependencyInjection\Reference;
 
 final class ReferencesResolverTest extends TestCase
 {

@@ -4,11 +4,6 @@ declare(strict_types=1);
 
 namespace Termyn\Bundle\SmartReply\Test\DependencyInjection;
 
-use Termyn\Bundle\SmartReply\DependencyInjection\SmartReplyExtension;
-use Termyn\Bundle\SmartReply\ResponderListener;
-use Termyn\SmartReply\Bridge\HttpFoundation\Request\RequestAccessor;
-use Termyn\SmartReply\Bridge\HttpFoundation\Request\RequestFlashBagProvider;
-use Termyn\SmartReply\Bridge\HttpFoundation\Request\RequestReferrerProvider;
 use Codea\SmartReply\Bridge\HttpFoundation\Request\RequestUriProvider;
 use Codea\SmartReply\Bridge\HttpFoundation\SessionFlashMessagePublisher;
 use Codea\SmartReply\Bridge\Twig\TwigTemplateRenderer;
@@ -31,6 +26,11 @@ use Codea\SmartReply\Service\FlashMessagePublisher;
 use Codea\SmartReply\Service\TemplateRenderer;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Termyn\Bundle\SmartReply\DependencyInjection\SmartReplyExtension;
+use Termyn\Bundle\SmartReply\ResponderListener;
+use Termyn\SmartReply\Bridge\HttpFoundation\Request\RequestAccessor;
+use Termyn\SmartReply\Bridge\HttpFoundation\Request\RequestFlashBagProvider;
+use Termyn\SmartReply\Bridge\HttpFoundation\Request\RequestReferrerProvider;
 
 final class SmartReplyExtensionTest extends TestCase
 {

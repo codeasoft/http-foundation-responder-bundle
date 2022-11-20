@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Termyn\Bundle\SmartReply\Test;
 
-use Termyn\Bundle\SmartReply\ResponderListener;
-use Termyn\SmartReply\Middleware\ResponseProducer;
-use Termyn\SmartReply\MiddlewareResponder;
-use Termyn\SmartReply\Response\Resource\Text\PlainText;
-use Termyn\SmartReply\Response\ResponseFactory\TextResponseFactory;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Termyn\Bundle\SmartReply\ResponderListener;
+use Termyn\SmartReply\Middleware\ResponseProducer;
+use Termyn\SmartReply\MiddlewareResponder;
+use Termyn\SmartReply\Response\Resource\Text\PlainText;
+use Termyn\SmartReply\Response\ResponseFactory\TextResponseFactory;
 
 final class ResponderListenerTest extends TestCase
 {

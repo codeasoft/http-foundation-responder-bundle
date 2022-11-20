@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Termyn\Bundle\SmartReply\Test\DependencyInjection\Compiler;
 
+use PHPUnit\Framework\TestCase;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Termyn\Bundle\SmartReply\DependencyInjection\Compiler\RegisterMiddlewareResponderCompilerPas;
 use Termyn\Bundle\SmartReply\Test\FakeContainerBuilderFactory;
 use Termyn\SmartReply\Middleware\ResponseProducer;
 use Termyn\SmartReply\MiddlewareResponder;
 use Termyn\SmartReply\Service\FlashMessagePublisher;
-use PHPUnit\Framework\TestCase;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 final class RegisterMiddlewareResponderCompilerPassTest extends TestCase
 {

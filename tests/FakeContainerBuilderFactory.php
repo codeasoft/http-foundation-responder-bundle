@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Termyn\Bundle\SmartReply\Test;
 
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Definition;
 use Termyn\Bundle\SmartReply\DependencyInjection\Helper\DefinitionFactory;
 use Termyn\SmartReply\Middleware\ResponseProducer;
 use Termyn\SmartReply\MiddlewareResponder;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Definition;
 
 final class FakeContainerBuilderFactory
 {
