@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Codea\Bundle\SmartReply\DependencyInjection;
+namespace Termyn\Bundle\SmartReply\DependencyInjection;
 
-use Codea\SmartReply\Middleware;
-use Codea\SmartReply\Response\ResponseFactory;
+use Termyn\SmartReply\Middleware;
+use Termyn\SmartReply\Response\ResponseFactory;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -25,10 +25,10 @@ final class SmartReplyExtension extends Extension implements ExtensionInterface,
     public function prepend(ContainerBuilder $container): void
     {
         $container->registerForAutoconfiguration(Middleware::class)
-            ->addTag('codea.responder.middleware');
+            ->addTag('termyn.responder.middleware');
 
         $container->registerForAutoconfiguration(ResponseFactory::class)
-            ->addTag('codea.responder.response_factory');
+            ->addTag('termyn.responder.response_factory');
     }
 
     public function load(array $configs, ContainerBuilder $container): void

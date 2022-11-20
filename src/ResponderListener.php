@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Codea\Bundle\SmartReply;
+namespace Termyn\Bundle\SmartReply;
 
-use Codea\SmartReply\Responder;
-use Codea\SmartReply\Response\Resource;
+use Termyn\SmartReply\Responder;
+use Termyn\SmartReply\Response\Resource;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 
 final class ResponderListener

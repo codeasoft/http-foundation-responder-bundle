@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Codea\Bundle\SmartReply\Test\DependencyInjection\Helper;
+namespace Termyn\Bundle\SmartReply\Test\DependencyInjection\Helper;
 
-use Codea\Bundle\SmartReply\DependencyInjection\Helper\ReferencesResolver;
-use Codea\Bundle\SmartReply\ResponderListener;
-use Codea\Bundle\SmartReply\SmartReplyBundle;
+use Termyn\Bundle\SmartReply\DependencyInjection\Helper\ReferencesResolver;
+use Termyn\Bundle\SmartReply\ResponderListener;
+use Termyn\Bundle\SmartReply\SmartReplyBundle;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\Reference;
 

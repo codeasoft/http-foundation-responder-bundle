@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Codea\Bundle\SmartReply\Test\DependencyInjection\Compiler;
+namespace Termyn\Bundle\SmartReply\Test\DependencyInjection\Compiler;
 
-use Codea\Bundle\SmartReply\DependencyInjection\Compiler\ResetFlashMessagePublisherCompilerPass;
-use Codea\Bundle\SmartReply\DependencyInjection\Helper\DefinitionFactory;
-use Codea\SmartReply\Bridge\HttpFoundation\TranslatableSessionFlashMessagePublisher;
-use Codea\SmartReply\Service\FlashMessagePublisher;
+use Termyn\Bundle\SmartReply\DependencyInjection\Compiler\ResetFlashMessagePublisherCompilerPass;
+use Termyn\Bundle\SmartReply\DependencyInjection\Helper\DefinitionFactory;
+use Termyn\SmartReply\Bridge\HttpFoundation\TranslatableSessionFlashMessagePublisher;
+use Termyn\SmartReply\Service\FlashMessagePublisher;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Contracts\Translation\TranslatorInterface;

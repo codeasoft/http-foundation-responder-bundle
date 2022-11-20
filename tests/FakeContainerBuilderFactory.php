@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Codea\Bundle\SmartReply\Test;
+namespace Termyn\Bundle\SmartReply\Test;
 
-use Codea\Bundle\SmartReply\DependencyInjection\Helper\DefinitionFactory;
-use Codea\SmartReply\Middleware\ResponseProducer;
-use Codea\SmartReply\MiddlewareResponder;
+use Termyn\Bundle\SmartReply\DependencyInjection\Helper\DefinitionFactory;
+use Termyn\SmartReply\Middleware\ResponseProducer;
+use Termyn\SmartReply\MiddlewareResponder;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 
@@ -14,7 +14,7 @@ final class FakeContainerBuilderFactory
 {
     public static function withMiddlewares(string ...$middlewareIds): ContainerBuilder
     {
-        return self::create($middlewareIds, 'codea.responder.middleware');
+        return self::create($middlewareIds, 'termyn.responder.middleware');
     }
 
     public static function withResponderAndMiddlewares(string ...$middlewareIds): ContainerBuilder
@@ -32,7 +32,7 @@ final class FakeContainerBuilderFactory
 
     public static function withResponseFactories(string ...$responseFactoryIds): ContainerBuilder
     {
-        return self::create($responseFactoryIds, 'codea.responder.response_factory');
+        return self::create($responseFactoryIds, 'termyn.responder.response_factory');
     }
 
     private static function create(array $serviceIds, string $tag): ContainerBuilder

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Codea\Bundle\SmartReply\Test\DependencyInjection\Compiler;
+namespace Termyn\Bundle\SmartReply\Test\DependencyInjection\Compiler;
 
-use Codea\Bundle\SmartReply\DependencyInjection\Compiler\RegisterMiddlewareResponderCompilerPas;
-use Codea\Bundle\SmartReply\Test\FakeContainerBuilderFactory;
-use Codea\SmartReply\Middleware\ResponseProducer;
-use Codea\SmartReply\MiddlewareResponder;
-use Codea\SmartReply\Service\FlashMessagePublisher;
+use Termyn\Bundle\SmartReply\DependencyInjection\Compiler\RegisterMiddlewareResponderCompilerPas;
+use Termyn\Bundle\SmartReply\Test\FakeContainerBuilderFactory;
+use Termyn\SmartReply\Middleware\ResponseProducer;
+use Termyn\SmartReply\MiddlewareResponder;
+use Termyn\SmartReply\Service\FlashMessagePublisher;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 

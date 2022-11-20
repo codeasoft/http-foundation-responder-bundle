@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Codea\Bundle\SmartReply\Test\DependencyInjection\Compiler;
+namespace Termyn\Bundle\SmartReply\Test\DependencyInjection\Compiler;
 
-use Codea\Bundle\SmartReply\DependencyInjection\Compiler\RegisterResponseProducerCompilerPass;
-use Codea\Bundle\SmartReply\Test\FakeContainerBuilderFactory;
-use Codea\SmartReply\Middleware\ResponseProducer;
-use Codea\SmartReply\Response\ResponseFactory\JsonResponseFactory;
-use Codea\SmartReply\Response\ResponseFactory\TextResponseFactory;
+use Termyn\Bundle\SmartReply\DependencyInjection\Compiler\RegisterResponseProducerCompilerPass;
+use Termyn\Bundle\SmartReply\Test\FakeContainerBuilderFactory;
+use Termyn\SmartReply\Middleware\ResponseProducer;
+use Termyn\SmartReply\Response\ResponseFactory\JsonResponseFactory;
+use Termyn\SmartReply\Response\ResponseFactory\TextResponseFactory;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
@@ -30,7 +30,7 @@ final class RegisterResponseProducerCompilerPassTest extends TestCase
         );
 
         $this->assertSame($responseFactoryIds, $middlewareFactoryIds);
-        $this->assertTrue($middlewareDefinition->hasTag('codea.responder.middleware'));
+        $this->assertTrue($middlewareDefinition->hasTag('termyn.responder.middleware'));
     }
 
     public function provideData(): iterable

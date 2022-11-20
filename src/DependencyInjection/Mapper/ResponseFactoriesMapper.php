@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Codea\Bundle\SmartReply\DependencyInjection\Mapper;
+namespace Termyn\Bundle\SmartReply\DependencyInjection\Mapper;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -14,7 +14,7 @@ final class ResponseFactoriesMapper
     public static function map(ContainerBuilder $containerBuilder): array
     {
         return array_keys(
-            $containerBuilder->findTaggedServiceIds('codea.responder.response_factory')
+            $containerBuilder->findTaggedServiceIds('termyn.responder.response_factory')
         );
     }
 }

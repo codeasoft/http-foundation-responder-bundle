@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Codea\Bundle\SmartReply\Test;
+namespace Termyn\Bundle\SmartReply\Test;
 
-use Codea\Bundle\SmartReply\ResponderListener;
-use Codea\SmartReply\Middleware\ResponseProducer;
-use Codea\SmartReply\MiddlewareResponder;
-use Codea\SmartReply\Response\Resource\Text\PlainText;
-use Codea\SmartReply\Response\ResponseFactory\TextResponseFactory;
+use Termyn\Bundle\SmartReply\ResponderListener;
+use Termyn\SmartReply\Middleware\ResponseProducer;
+use Termyn\SmartReply\MiddlewareResponder;
+use Termyn\SmartReply\Response\Resource\Text\PlainText;
+use Termyn\SmartReply\Response\ResponseFactory\TextResponseFactory;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

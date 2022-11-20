@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Codea\Bundle\SmartReply\DependencyInjection\Compiler;
+namespace Termyn\Bundle\SmartReply\DependencyInjection\Compiler;
 
-use Codea\Bundle\SmartReply\DependencyInjection\Helper\DefinitionFactory;
-use Codea\Bundle\SmartReply\DependencyInjection\Mapper\ResponseFactoriesMapper;
-use Codea\SmartReply\Middleware\ResponseProducer;
+use Termyn\Bundle\SmartReply\DependencyInjection\Helper\DefinitionFactory;
+use Termyn\Bundle\SmartReply\DependencyInjection\Mapper\ResponseFactoriesMapper;
+use Termyn\SmartReply\Middleware\ResponseProducer;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -18,6 +18,6 @@ final class RegisterResponseProducerCompilerPass implements CompilerPassInterfac
         $responseFactoryIds = ResponseFactoriesMapper::map($container);
 
         $container->setDefinition($responseProducerId, DefinitionFactory::create($responseProducerId, $responseFactoryIds))
-            ->addTag('codea.responder.middleware');
+            ->addTag('termyn.responder.middleware');
     }
 }

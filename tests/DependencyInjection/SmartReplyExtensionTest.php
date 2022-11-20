@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Codea\Bundle\SmartReply\Test\DependencyInjection;
+namespace Termyn\Bundle\SmartReply\Test\DependencyInjection;
 
-use Codea\Bundle\SmartReply\DependencyInjection\SmartReplyExtension;
-use Codea\Bundle\SmartReply\ResponderListener;
-use Codea\SmartReply\Bridge\HttpFoundation\Request\RequestAccessor;
-use Codea\SmartReply\Bridge\HttpFoundation\Request\RequestFlashBagProvider;
-use Codea\SmartReply\Bridge\HttpFoundation\Request\RequestReferrerProvider;
+use Termyn\Bundle\SmartReply\DependencyInjection\SmartReplyExtension;
+use Termyn\Bundle\SmartReply\ResponderListener;
+use Termyn\SmartReply\Bridge\HttpFoundation\Request\RequestAccessor;
+use Termyn\SmartReply\Bridge\HttpFoundation\Request\RequestFlashBagProvider;
+use Termyn\SmartReply\Bridge\HttpFoundation\Request\RequestReferrerProvider;
 use Codea\SmartReply\Bridge\HttpFoundation\Request\RequestUriProvider;
 use Codea\SmartReply\Bridge\HttpFoundation\SessionFlashMessagePublisher;
 use Codea\SmartReply\Bridge\Twig\TwigTemplateRenderer;
@@ -126,8 +126,8 @@ final class SmartReplyExtensionTest extends TestCase
     public function provideServiceTags(): iterable
     {
         $serviceTags = [
-            Middleware::class => 'codea.responder.middleware',
-            ResponseFactory::class => 'codea.responder.response_factory',
+            Middleware::class => 'termyn.responder.middleware',
+            ResponseFactory::class => 'termyn.responder.response_factory',
         ];
 
         foreach ($serviceTags as $serviceId => $serviceTag) {

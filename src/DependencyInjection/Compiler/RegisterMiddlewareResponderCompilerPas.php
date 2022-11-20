@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Codea\Bundle\SmartReply\DependencyInjection\Compiler;
+namespace Termyn\Bundle\SmartReply\DependencyInjection\Compiler;
 
-use Codea\Bundle\SmartReply\DependencyInjection\Helper\DefinitionFactory;
-use Codea\Bundle\SmartReply\DependencyInjection\Mapper\MiddlewaresMapper;
-use Codea\SmartReply\Middleware\ResponseProducer;
-use Codea\SmartReply\MiddlewareResponder;
+use Termyn\Bundle\SmartReply\DependencyInjection\Helper\DefinitionFactory;
+use Termyn\Bundle\SmartReply\DependencyInjection\Mapper\MiddlewaresMapper;
+use Termyn\SmartReply\Middleware\ResponseProducer;
+use Termyn\SmartReply\MiddlewareResponder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 

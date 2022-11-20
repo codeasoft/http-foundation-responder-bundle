@@ -7,29 +7,29 @@
     <services>
         <defaults autowire="true" autoconfigure="true" public="false"/>
 
-        <service id="Codea\SmartReply\Bridge\HttpFoundation\Request\RequestAccessor"/>
-        <service id="Codea\SmartReply\Bridge\HttpFoundation\Request\RequestFlashBagProvider"/>
-        <service id="Codea\SmartReply\Bridge\HttpFoundation\Request\RequestReferrerProvider"/>
-        <service id="Codea\SmartReply\Bridge\HttpFoundation\Request\RequestUriProvider"/>
-        <service id="Codea\SmartReply\Bridge\HttpFoundation\SessionFlashMessagePublisher"/>
-        <service id="Codea\SmartReply\Bridge\Twig\TwigTemplateRenderer"/>
+        <service id="Termyn\SmartReply\Bridge\HttpFoundation\Request\RequestAccessor"/>
+        <service id="Termyn\SmartReply\Bridge\HttpFoundation\Request\RequestFlashBagProvider"/>
+        <service id="Termyn\SmartReply\Bridge\HttpFoundation\Request\RequestReferrerProvider"/>
+        <service id="Termyn\SmartReply\Bridge\HttpFoundation\Request\RequestUriProvider"/>
+        <service id="Termyn\SmartReply\Bridge\HttpFoundation\SessionFlashMessagePublisher"/>
+        <service id="Termyn\SmartReply\Bridge\Twig\TwigTemplateRenderer"/>
 
-        <service id="Codea\SmartReply\Http\ReferrerProvider" alias="Codea\SmartReply\Bridge\HttpFoundation\Request\RequestReferrerProvider"/>
-        <service id="Codea\SmartReply\Http\UriProvider" alias="Codea\SmartReply\Bridge\HttpFoundation\Request\RequestUriProvider"/>
+        <service id="Termyn\SmartReply\Http\ReferrerProvider" alias="Termyn\SmartReply\Bridge\HttpFoundation\Request\RequestReferrerProvider"/>
+        <service id="Termyn\SmartReply\Http\UriProvider" alias="Termyn\SmartReply\Bridge\HttpFoundation\Request\RequestUriProvider"/>
 
-        <service id="Codea\SmartReply\Middleware\FlashMessageEmitter"/>
+        <service id="Termyn\SmartReply\Middleware\FlashMessageEmitter"/>
 
-        <service id="Codea\SmartReply\Response\ResponseFactory\FileResponseFactory"/>
-        <service id="Codea\SmartReply\Response\ResponseFactory\JsonResponseFactory"/>
-        <service id="Codea\SmartReply\Response\ResponseFactory\ReferrerRedirectResponseFactory"/>
-        <service id="Codea\SmartReply\Response\ResponseFactory\RouteRedirectResponseFactory"/>
-        <service id="Codea\SmartReply\Response\ResponseFactory\TextResponseFactory"/>
-        <service id="Codea\SmartReply\Response\ResponseFactory\TwigResponseFactory"/>
-        <service id="Codea\SmartReply\Response\ResponseFactory\UriRedirectResponseFactory"/>
-        <service id="Codea\SmartReply\Response\ResponseFactory\UrlRedirectResponseFactory"/>
+        <service id="Termyn\SmartReply\Response\ResponseFactory\FileResponseFactory"/>
+        <service id="Termyn\SmartReply\Response\ResponseFactory\JsonResponseFactory"/>
+        <service id="Termyn\SmartReply\Response\ResponseFactory\ReferrerRedirectResponseFactory"/>
+        <service id="Termyn\SmartReply\Response\ResponseFactory\RouteRedirectResponseFactory"/>
+        <service id="Termyn\SmartReply\Response\ResponseFactory\TextResponseFactory"/>
+        <service id="Termyn\SmartReply\Response\ResponseFactory\TwigResponseFactory"/>
+        <service id="Termyn\SmartReply\Response\ResponseFactory\UriRedirectResponseFactory"/>
+        <service id="Termyn\SmartReply\Response\ResponseFactory\UrlRedirectResponseFactory"/>
 
-        <service id="Codea\SmartReply\Service\FlashMessagePublisher" alias="Codea\SmartReply\Bridge\HttpFoundation\SessionFlashMessagePublisher"/>
-        <service id="Codea\SmartReply\Service\TemplateRenderer" alias="Codea\SmartReply\Bridge\Twig\TwigTemplateRenderer"/>
+        <service id="Termyn\SmartReply\Service\FlashMessagePublisher" alias="Termyn\SmartReply\Bridge\HttpFoundation\SessionFlashMessagePublisher"/>
+        <service id="Termyn\SmartReply\Service\TemplateRenderer" alias="Termyn\SmartReply\Bridge\Twig\TwigTemplateRenderer"/>
 
         <service id="Codea\SmartReply\Responder" alias="Codea\SmartReply\MiddlewareResponder"/>
 

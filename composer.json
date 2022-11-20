@@ -1,5 +1,5 @@
 {
-  "name": "codea/smart-reply-bundle",
+  "name": "termyn/smart-reply-bundle",
   "description": "Integration of smart responder based on the Symfony HTTP Foundation",
   "type": "symfony-bundle",
   "license": "MIT",
@@ -19,19 +19,19 @@
   },
   "autoload": {
     "psr-4": {
-      "Codea\\Bundle\\SmartReply\\": "src/"
+      "Termyn\\Bundle\\SmartReply\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Codea\\Bundle\\SmartReply\\Test\\": "tests"
+      "Termyn\\Bundle\\SmartReply\\Test\\": "tests"
     }
   },
   "require": {
     "php": "^8.1",
-    "codea/smart-reply": "dev-master",
     "symfony/framework-bundle": "5.*|6.*",
-    "symfony/twig-bundle": "5.*|6.*"
+    "symfony/twig-bundle": "5.*|6.*",
+    "termyn/smart-reply": "dev-master"
   },
   "require-dev": {
     "phpstan/phpstan": "1.8.*",
